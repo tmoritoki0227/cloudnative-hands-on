@@ -1,6 +1,6 @@
-## Link
-- [EC2にdockerインストール](##EC2にdockerインストール)
-- [nginxオフィシャルDockerイメージを利用してみよう](##nginxオフィシャルDockerイメージを利用してみよう)
+# 目次
+- [EC2にdockerインストール](#EC2にdockerインストール)
+- [nginxオフィシャルDockerイメージを利用してみよう](#nginxオフィシャルDockerイメージを利用してみよう)
 
 ## EC2にdockerインストール
 ```bash
