@@ -170,6 +170,9 @@ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/tes
 ```
 
 #### ブラウザからアクセスする
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/world
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
 ## 後始末
 ### コンテナとイメージ全削除
