@@ -1,2 +1,0 @@
-# cloudnative-study
-cloudnative-study
