@@ -90,7 +90,7 @@ $ docker image ls
 
 ### コンテナ起動とバックグラウンド起動
 ```bash
-docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
+$ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
 
 ### port解放
@@ -109,26 +109,28 @@ $ docker ps
 $ docker exec -it test_httpserver /bin/bash
 $ ls # 任意のコマンド実行
 $ exit
+$ docker ps
 $ docker container stop test_httpserver
+$ docker ps
+$ docker ps -a
 ```
 
-### これまで作ったコンテナを削除
+### 作ったコンテナを停止、削除
 ```bash
 $ docker ps -a
 $ docker container stop test_httpserver
-$ docker container stop nginx-test
+$ docker rm test_httpserver
 ```
 
-### docker hubへ作成したDockerイメージをアップロード
+## docker hubへ作成したDockerイメージをアップロード
 
-#### 参考Doc
+### 参考Doc
 - https://gray-code.com/blog/container-image-push-for-dockerhub/
-- https://hub.docker.com/r/tmoritoki0227/
 
-#### docker hub ブラウザからログイン
+### docker hub ブラウザからログイン
 https://hub.docker.com/
 
-#### コマンドでdocker hub ログイン
+### コマンドでdocker hub ログイン
 ```bash
 docker login
   Username: 入力汁
@@ -136,7 +138,7 @@ docker login
 ```
 Login Succeededが表示されれば成功
 
-#### Dockerイメージアップロード
+### Dockerイメージアップロード
 作成したtest_httpserverをアップロードします。コマンド成功後、https://hub.docker.com/を確認します。
 ```
 docker image ls
@@ -146,36 +148,32 @@ docker push tmoritoki0227/test_httpserver:latest
 ```
 - `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
 - https://hub.docker.com/repository/docker/tmoritoki0227/test_httpserver
-- 実行例
-```
-[ec2-user@ip-172-31-3-57 docker]$ docker push tmoritoki0227/test_httpserver:latest
-The push refers to repository [docker.io/tmoritoki0227/test_httpserver]
-cc0659cca492: Pushed
-3f78366f85d9: Pushed
-4f765311acac: Layer already exists
-latest: digest: sha256:5af8f982846291287743f08c757f7ba4ac7c4d82af82ae9d0c0256c186261939 size: 954
-```
+- docker pushは有料と思われる。通信料分
 
-#### dockerイメージ(test_httpserver)を削除する
+### dockerイメージ(test_httpserver)を削除する
 ローカルにあるとそれを使ってしまうため。
 ```
-$ docker image rmi test_httpserver
+$ docker image ls
 $ docker image rmi tmoritoki0227/test_httpserver
+$ docker image rmi test_httpserver
 ```
 
-#### アップロードしたdockerイメージを使ってみる
+### アップロードしたdockerイメージを使ってみる
 ```bash
-docker pull tmoritoki0227/test_httpserver:latest
-docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/test_httpserver:latest
+$ docker pull tmoritoki0227/test_httpserver:latest
+$ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/test_httpserver:latest
 ```
+`docker pull`時に表示されるログにダウンロード状況の表示がない場合は、ローカルにあるイメージを使ってますので、注意してください。
 
-#### ブラウザからアクセスする
+### ブラウザからアクセスする
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/world
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
 ## 後始末
-### コンテナとイメージ全削除
+### コンテナ停止、削除とイメージ全削除
+この辺のコマンドを使う。作業をやり直すときなど楽。
 ```bash
-$ docker stop $(docker ps -q) && docker rmi $(docker images -q) -f
+$ docker stop $(docker ps -q) ;docker rmi $(docker images -q) -f;docker system prune -a
+$ docker image ls;docker ps -a
 ```
