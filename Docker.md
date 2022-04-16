@@ -2,7 +2,7 @@
 - [EC2にdockerインストール](#EC2にdockerインストール)
 - [nginxオフィシャルDockerイメージを利用してみよう](#nginxオフィシャルDockerイメージを利用してみよう)
 - [自分でDockerイメージを作ろう](#自分でDockerイメージを作ろう)
-- [docker hubへ作成したDockerイメージをアップロード](#docker hubへ作成したDockerイメージをアップロード)
+- [dockerhubへ作成したDockerイメージをアップロード](#dockerhubへ作成したDockerイメージをアップロード)
 - [後始末](#後始末)
 
 
@@ -130,7 +130,7 @@ $ docker container stop test_httpserver
 $ docker rm test_httpserver
 ```
 
-## docker hubへ作成したDockerイメージをアップロード
+## dockerhubへ作成したDockerイメージをアップロード
 
 ### 参考Doc
 - https://gray-code.com/blog/container-image-push-for-dockerhub/
