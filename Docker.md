@@ -140,23 +140,22 @@ https://hub.docker.com/
 
 ### コマンドでdocker hub ログイン
 ```bash
-docker login
+$ docker login
   Username: 入力汁
   Password:　　入力汁
 ```
 Login Succeededが表示されれば成功
 
 ### Dockerイメージアップロード
-作成したtest_httpserverをアップロードします。コマンド成功後、https://hub.docker.com/を確認します。
+作成したtest_httpserverをアップロードします。コマンド成功後、https://hub.docker.com/ を確認します。
 ```
-docker image ls
-docker tag test_httpserver tmoritoki0227/test_httpserver:latest
-docker image ls
-docker push tmoritoki0227/test_httpserver:latest
+$ docker image ls
+$ docker tag test_httpserver tmoritoki0227/test_httpserver:latest
+$ docker image ls
+$ docker push tmoritoki0227/test_httpserver:latest
 ```
 - `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
-- https://hub.docker.com/repository/docker/tmoritoki0227/test_httpserver
-- docker pushは有料と思われる。通信料分
+- docker pushの通信料は有料と思われる。
 
 ### dockerイメージ(test_httpserver)を削除する
 ローカルにあるとそれを使ってしまうため。
