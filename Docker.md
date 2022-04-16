@@ -1,33 +1,36 @@
-# EC2にdockerインストール
-```
-sudo yum install -y docker
-sudo systemctl start docker
-sudo systemctl status docker
-sudo systemctl enable docker
-sudo usermod -a -G docker ec2-user
+## EC2にdockerインストール
+```bash
+$ sudo yum install -y docker
+$ sudo systemctl start docker
+$ sudo systemctl status docker
+$ sudo systemctl enable docker
+$ sudo usermod -a -G docker ec2-user
 
 ## dockerグループがなければ作る
-sudo groupadd docker
+$ sudo groupadd docker
 
 ## 現行ユーザをdockerグループに所属させる
-sudo gpasswd -a $USER docker
+$ sudo gpasswd -a $USER docker
 
 ## dockerデーモンを再起動する (CentOS7の場合)
-sudo systemctl restart docker
+$ sudo systemctl restart docker
 
 ## exitして再ログインすると反映される。
-exit
+$ exit
 ```
 
-## Dockerfile作成
-```
-mkdir ~/docker
-vim ~/docker/Dockerfile
-vim ~/docker/index.html
+## nginxコンテナを起動してブラウザから確認しよう
+これをやってみよう
+https://snowsystem.net/container/docker/nginx/
+
+## 自分でDockerイメージを作ろう
+### Dockerfile作成
+```bash
+$ mkdir ~/docker
+$ vim ~/docker/Dockerfile
 ```
 
-
-```ruby:sushi.rb
+```bash
 FROM amazonlinux:2.0.20211223.0
 
 # yum update & install
@@ -56,72 +59,55 @@ EXPOSE 8081
 CMD ["/usr/local/bin/test_httpserver", "-D", "FOREGROUND"]
 ```
 
-## index.html
-hello
+### Dockerイメージの作成
+```
+$ docker image build -t test_httpserver:latest .
 ```
 
-## docker buildを試す
-https://scrapbox.io/llminatoll/docker_run%E3%81%AE%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D
-
-```
-sudo docker image build -t moritoki/sample:latest .
-sudo docker image build -t test_httpserver:latest .
+### Dockerイメージの確認
+```bash
+$ docker image ls
 ```
 
-## イメージ確認
-```
-sudo docker image ls
-```
-
-## 起動中のコンテナに入る
-```
-docker exec -i -t CONTAINER_ID /bin/bash
-docker exec -i -t CONTAINER_ID /bin/sh
+### コンテナ起動とバックグラウンド起動
+```bash
+docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
 
-## イメージの取得とコンテナに入る
-```
-sudo docker run -it --name test_dock moritoki/sample:latest /bin/bash
-sudo docker run -it --name test_grok dalongrong/grok-exporter:latest /bin/bash
-sudo docker run -it --name test_httpserver test_httpserver:latest /bin/bash
-```
-
-
-## コンテナ起動とバックグラウンド起動
-なぜか10000超えると動かないように思える
-
-```
-### うごかん
-sudo docker run -d --name test_dock -p 10080:80 moritoki/sample:latest  # 10080がダメなのか？
-
-### コンテナを動かす（入らない）
-sudo docker run -d --name test_dock -p 8000:80 tmoritoki0227/sample:latest 
-sudo docker run -d --name test_dock -p 80:80 tmoritoki0227/sample:latest
-
-sudo docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
+### 起動中のコンテナに入る
+```bash
+$ docker exec -i -t CONTAINER_ID /bin/bash
+$ 任意のコマンド実行
+$ exit
 ```
 
-疎通確認
-
-```
+### dockerイメージへの疎通確認、コマンド
+```bash
 # ec2
-nc -vz localhost 8080
-# local(Mac)
-nc -vz ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com 8080
+$ nc -vz localhost 8080
+# local(Mac or Windows)
+$ nc -vz ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com 8080
 ```
-ブラウザから
+
+### port解放
+
+### dockerイメージへの疎通確認、ブラウザから
 http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/hello
 http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/world
 http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
-## docker hub upload
+### docker hubへ作成したDockerイメージをアップロード
+
+#### 参考
 https://gray-code.com/blog/container-image-push-for-dockerhub/
-
 https://hub.docker.com/repository/docker/tmoritoki0227/study
+https://hub.docker.com/r/tmoritoki0227/
 
-https://hub.docker.com/r/tmoritoki0227/study
 
-```
+#### アカウント作成
+
+#### アップロードコマンド
+```bash
 docker login
   Username: 入力汁
   Password:　　入力汁
@@ -135,47 +121,43 @@ docker push tmoritoki0227/test_httpserver:latest
 tmoritoki0227 はdockerhubのリポジトリ名に合わせないとだめ
 https://hub.docker.com/repository/docker/tmoritoki0227/test_httpserver
 
-## コンテナ起動確認
+#### アップロードしたdockerイメージを使ってみる
+
+```bash
+docker run -it --name test_httpserver test_httpserver:latest /bin/bash
 ```
 
-sudo docker ps
-sudo docker ps -a # 停止中のコンテナも表示
+## おまけ
+## イメージの取得とコンテナに入る
+```bash
+docker run -it --name test_httpserver test_httpserver:latest /bin/bash
+# portいらない？
+docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
 
-## コンテナに入る
-```
-sudo docker attach CONTAINER ID
-```
-
-## コンテナ停止
-```
-sudo docker container stop
+### コンテナ起動確認
+```bash
+docker ps
+docker ps -a # 停止中のコンテナも表示
 ```
 
-## コンテナ削除
-```
-sudo docker rm [コンテナID]
-```
-
-## イメージ削除
-```
-sudo docker images で
-sudo docker rmi イメージID
+### コンテナに入る
+```bash
+docker attach CONTAINER ID
 ```
 
-## Dockerコマンドをsudoなしで実行する方法
-非推奨らしい
-
+### コンテナ停止
+```bash
+docker container stop
 ```
-## dockerグループがなければ作る
-sudo groupadd docker
 
-## 現行ユーザをdockerグループに所属させる
-sudo gpasswd -a $USER docker
+### コンテナ削除
+```bash
+docker rm [コンテナID]
+```
 
-## dockerデーモンを再起動する (CentOS7の場合)
-sudo systemctl restart docker
-
-## exitして再ログインすると反映される。
-exit
+### イメージ削除
+```bash
+docker images で
+docker rmi イメージID
 ```
