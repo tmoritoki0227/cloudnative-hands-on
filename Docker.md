@@ -6,9 +6,6 @@ $ sudo systemctl status docker
 $ sudo systemctl enable docker
 $ sudo usermod -a -G docker ec2-user
 
-## dockerグループがなければ作る
-$ sudo groupadd docker
-
 ## 現行ユーザをdockerグループに所属させる
 $ sudo gpasswd -a $USER docker
 
@@ -17,10 +14,25 @@ $ sudo systemctl restart docker
 
 ## exitして再ログインすると反映される。
 $ exit
+
+$ docker -v
 ```
 
 ## nginxコンテナを起動してブラウザから確認しよう
-これをやってみよう
+
+```
+$ docker pull nginx
+$ docker image ls
+$ docker run -d -p 8888:80 nginx
+```
+- ブラウザから
+http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
+アクセスできないことを確認
+- httpの8888ポートを解放
+- ブラウザから
+http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
+アクセスできることを確認
+- この作業の詳細は以下を参考にしてください。
 https://snowsystem.net/container/docker/nginx/
 
 ## 自分でDockerイメージを作ろう
@@ -93,9 +105,9 @@ $ nc -vz ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com 8080
 
 ### dockerイメージへの疎通確認、ブラウザから
 urlは自分のec2のDNSにする
-- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/hello
-- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/world
-- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8081/metrics
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/world
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
 ### docker hubへ作成したDockerイメージをアップロード
 
