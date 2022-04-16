@@ -157,6 +157,7 @@ latest: digest: sha256:5af8f982846291287743f08c757f7ba4ac7c4d82af82ae9d0c0256c18
 ```
 
 #### dockerイメージ(test_httpserver)を削除する
+ローカルにあるとそれを使ってしまうため。
 ```
 $ docker image rmi test_httpserver
 $ docker image rmi tmoritoki0227/test_httpserver
@@ -166,4 +167,12 @@ $ docker image rmi tmoritoki0227/test_httpserver
 ```bash
 docker pull tmoritoki0227/test_httpserver:latest
 docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/test_httpserver:latest
+```
+
+#### ブラウザからアクセスする
+
+## 後始末
+### コンテナとイメージ全削除
+```bash
+$ docker stop $(docker ps -q) && docker rmi $(docker images -q) -f
 ```
