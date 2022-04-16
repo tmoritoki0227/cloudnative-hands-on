@@ -92,19 +92,19 @@ $ nc -vz ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com 8080
 ### port解放
 
 ### dockerイメージへの疎通確認、ブラウザから
-http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/hello
-http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/world
-http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8081/metrics
+urlは自分のec2のDNSにする
+- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/hello
+- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8080/world
+- http://ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
 ### docker hubへ作成したDockerイメージをアップロード
 
-#### 参考
-https://gray-code.com/blog/container-image-push-for-dockerhub/
-https://hub.docker.com/repository/docker/tmoritoki0227/study
-https://hub.docker.com/r/tmoritoki0227/
+#### 参考Doc
+- https://gray-code.com/blog/container-image-push-for-dockerhub/
+- https://hub.docker.com/r/tmoritoki0227/
 
-
-#### アカウント作成
+#### docker hub ブラウザからログイン
+https://hub.docker.com/
 
 #### アップロードコマンド
 ```bash
