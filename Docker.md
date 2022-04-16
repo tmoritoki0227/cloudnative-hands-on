@@ -18,12 +18,15 @@ $ exit
 $ docker -v
 ```
 
-## nginxコンテナを起動してブラウザから確認しよう
-
+## nginxオフィシャルDockerイメージを利用してみよう
+https://hub.docker.com/_/nginx
 ```
 $ docker pull nginx
 $ docker image ls
-$ docker run -d -p 8888:80 nginx
+$ docker run -d --name nginx-test -p 8888:80 nginx
+$ docker ps
+$ docker container stop nginx-test
+$ docker ps
 ```
 - ブラウザから
 http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
@@ -36,10 +39,12 @@ http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
 https://snowsystem.net/container/docker/nginx/
 
 ## 自分でDockerイメージを作ろう
+https://github.com/kichiram/golang/tree/main/http_server 吉●さんのテスト用webサーバをパクリます。
 ### Dockerfile作成
 ```bash
 $ mkdir ~/docker
-$ vim ~/docker/Dockerfile
+$ cd ~/docker/
+$ vim Dockerfile
 ```
 
 ```bash
@@ -72,42 +77,47 @@ CMD ["/usr/local/bin/test_httpserver", "-D", "FOREGROUND"]
 ```
 
 ### Dockerイメージの作成
-```
+```bash
 $ docker image build -t test_httpserver:latest .
 ```
+ちょっと時間がかかります。Successfullyが出力されれば成功です。
 
 ### Dockerイメージの確認
 ```bash
 $ docker image ls
 ```
+`test_httpserver   latest           666b3e1df1b6   About a minute ago   1.31G`のようなものがあるはずです。
 
 ### コンテナ起動とバックグラウンド起動
 ```bash
 docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
 
-### 起動中のコンテナに入る
-```bash
-$ docker exec -i -t CONTAINER_ID /bin/bash
-$ 任意のコマンド実行
-$ exit
-```
-
-### dockerイメージへの疎通確認、コマンド
-```bash
-# ec2
-$ nc -vz localhost 8080
-# local(Mac or Windows)
-$ nc -vz ec2-35-77-196-144.ap-northeast-1.compute.amazonaws.com 8080
-```
-
 ### port解放
+- 8080
+- 8081
 
-### dockerイメージへの疎通確認、ブラウザから
-urlは自分のec2のDNSにする
+### ブラウザから動作確認
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/world
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8081/metrics
+
+
+### 起動中のコンテナに入る
+```bash
+$ docker ps
+$ docker exec -it test_httpserver /bin/bash
+$ ls # 任意のコマンド実行
+$ exit
+$ docker container stop test_httpserver
+```
+
+### これまで作ったコンテナを削除
+```bash
+$ docker ps -a
+$ docker container stop test_httpserver
+$ docker container stop nginx-test
+```
 
 ### docker hubへ作成したDockerイメージをアップロード
 
@@ -118,58 +128,42 @@ urlは自分のec2のDNSにする
 #### docker hub ブラウザからログイン
 https://hub.docker.com/
 
-#### アップロードコマンド
+#### コマンドでdocker hub ログイン
 ```bash
 docker login
   Username: 入力汁
   Password:　　入力汁
+```
+Login Succeededが表示されれば成功
 
-sudo docker image build -t test_httpserver:latest .
+#### Dockerイメージアップロード
+作成したtest_httpserverをアップロードします。コマンド成功後、https://hub.docker.com/を確認します。
+```
 docker image ls
 docker tag test_httpserver tmoritoki0227/test_httpserver:latest
 docker image ls
 docker push tmoritoki0227/test_httpserver:latest
 ```
-tmoritoki0227 はdockerhubのリポジトリ名に合わせないとだめ
-https://hub.docker.com/repository/docker/tmoritoki0227/test_httpserver
+- `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
+- https://hub.docker.com/repository/docker/tmoritoki0227/test_httpserver
+- 実行例
+```
+[ec2-user@ip-172-31-3-57 docker]$ docker push tmoritoki0227/test_httpserver:latest
+The push refers to repository [docker.io/tmoritoki0227/test_httpserver]
+cc0659cca492: Pushed
+3f78366f85d9: Pushed
+4f765311acac: Layer already exists
+latest: digest: sha256:5af8f982846291287743f08c757f7ba4ac7c4d82af82ae9d0c0256c186261939 size: 954
+```
+
+#### dockerイメージ(test_httpserver)を削除する
+```
+$ docker image rmi test_httpserver
+$ docker image rmi tmoritoki0227/test_httpserver
+```
 
 #### アップロードしたdockerイメージを使ってみる
-
 ```bash
-docker run -it --name test_httpserver test_httpserver:latest /bin/bash
-```
-
-## おまけ
-## イメージの取得とコンテナに入る
-```bash
-docker run -it --name test_httpserver test_httpserver:latest /bin/bash
-# portいらない？
-docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
-```
-
-### コンテナ起動確認
-```bash
-docker ps
-docker ps -a # 停止中のコンテナも表示
-```
-
-### コンテナに入る
-```bash
-docker attach CONTAINER ID
-```
-
-### コンテナ停止
-```bash
-docker container stop
-```
-
-### コンテナ削除
-```bash
-docker rm [コンテナID]
-```
-
-### イメージ削除
-```bash
-docker images で
-docker rmi イメージID
+docker pull tmoritoki0227/test_httpserver:latest
+docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/test_httpserver:latest
 ```
