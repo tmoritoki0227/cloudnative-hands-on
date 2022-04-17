@@ -6,7 +6,7 @@ $ docker-compose --version
 ```
 
 ## 設定ファイルの作成
-### default.conf
+### docker-compose.yml
 ```bash
 $ cd ~/docker
 $ vi docker-compose.yml
@@ -24,7 +24,7 @@ services:
       - ./default.conf:/etc/nginx/conf.d/default.conf
 
   test_httpserver:
-    image: tmoritoki0227/test_httpserver:latest
+    image: tmoritoki0227/test_httpserver:latest # 先の演習で作成したイメージです。
     container_name: test_httpserver
     hostname: test_httpserver
     ports:
@@ -33,7 +33,7 @@ services:
     restart: always
 ```
 
-### default.conf
+### default.conf（nginxイメージ用）
 
 ```bash
 $ vi default.conf
