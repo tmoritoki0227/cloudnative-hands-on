@@ -1,146 +1,112 @@
 ## docker-composeのセットアップ
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-```
-## docker-compose作成・実行
-```
-# yaml作成
-vi docker-compose.yml
-
-# 起動
-docker-compose up
-
-# バックグラウンドで起動
-docker-compose up -d
-
-# 停止
-docker-compose down
+```bash
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
 ```
 
+## 設定ファイルの作成
+### default.conf
+```bash
+$ cd ~/docker
+$ vi docker-compose.yml
 ```
+
+```bash
 version: '3.5'
 services:
-
-# ----------- prometheus begin ----------- #
-  prometheus:
-    image: prom/prometheus:v2.30.3
-    container_name: prometheus
-    hostname: prometheus
+  nginx:
+    image: nginx:latest
+    container_name: nginx00
+    ports:
+      - "8888:80"
     volumes:
-      - /data/docker/containers/prometheus/etc/prometheus:/etc/prometheus
-      - /data/docker/containers/prometheus/data:/prometheus
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-    ports:
-      - 9090:9090
-    user: root
-    restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.10
-# ----------- prometheus end ----------- #
+      - ./default.conf:/etc/nginx/conf.d/default.conf
 
-# ----------- node-exporter begin ----------- #
-  node-exporter:
-    image: prom/node-exporter:v1.2.2
-    container_name: node-exporter
-    ports:
-      - 9100:9100
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.20
-# ----------- node-exporter end ----------- #
-
-# ----------- grafana begin ----------- #
-  grafana:
-    image: grafana/grafana:8.3.4
-    container_name: grafana
-    hostname: grafana
-    volumes:
-      - /data/docker/containers/grafana/data:/var/lib/grafana
-    ports:
-      - 3000:3000
-    user: root
-    env_file:
-      - /data/docker/containers/grafana/grafana.env
-    restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.30
-# ----------- grafana end ----------- #
-
-# ----------- alertmanager begin ----------- #
-  alertmanager:
-    image: prom/alertmanager:v0.23.0
-    container_name: alertmanager
-    hostname: alertmanager
-    volumes:
-      - /data/docker/containers/alertmanager/etc/alertmanager:/etc/alertmanager
-    command:
-      - "--config.file=/etc/alertmanager/config.yml"
-    ports:
-      - 9093:9093
-    restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.40
-# ----------- alertmanager end ----------- #
-
-# ----------- blackbox_exporter begin ----------- #
-  blackbox_exporter:
-    image: prom/blackbox-exporter:latest
-    container_name: blackbox_exporter
-    hostname: blackbox_exporter
-    volumes:
-      - /data/docker/containers/blackbox_exporter:/etc/blackbox_exporter
-    command:
-      - "--config.file=/etc/blackbox_exporter/config.yml"
-    ports:
-      - 9115:9115
-    restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.50
-# ----------- blackbox_exporter end ----------- #
-
-# ----------- grok_exporter start ----------- #
-  grok_exporter:
-    image: dalongrong/grok-exporter:latest
-    container_name: grok_exporter
-    hostname: grok_exporter
-    volumes:
-      - "/data/docker/containers/grok_exporter/example:/opt/example"
-      - "/data/docker/containers/grok_exporter/config.yml:/grok/config.yml"
-    ports:
-      - 9144:9144
-    restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.60
-# ----------- grok_exporter end ----------- #
-
-# ----------- http_server start ----------- #
   test_httpserver:
-    # image: tmoritoki0227/test_httpserver:latest
-    image: public.ecr.aws/l8s6z2n6/test_httpserver:latest
+    image: tmoritoki0227/test_httpserver:latest
     container_name: test_httpserver
     hostname: test_httpserver
     ports:
       - 8080:8080
       - 8081:8081
     restart: always
-    networks:
-      prometheus_study_network:
-        ipv4_address: 192.168.0.70
-# ----------- http_server end   ----------- #
-# 結局IP設定は不要な設定だったが、IPの設定方法として残しておく.ホストが同じ場合、コンテナはホスト名で通信すれば良い
-networks:
-  prometheus_study_network:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.0.0/24
 ```
+
+### default.conf
+
+```bash
+$ vi default.conf
+```
+
+```bash
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+```
+
+## docker-compose起動・停止
+```bash
+# docker-compose起動
+$ docker-compose up
+
+# docker-composeバックグラウンドで起動
+$ docker-compose up -d
+
+# docker-compose停止
+$ docker-compose down
+```
+
+## nginx動作確認
+http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888/
+
+## test_httpserver動作確認
+http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/hello
+http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/world
+http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8081/metrics
+
+## （参考）nginx設定
+- https://hub.docker.com/_/nginx
+- https://solomaker.club/how-to-use-dokcer-compose-yml-file/
+- https://amateur-engineer-blog.com/docker-compose-nginx/
