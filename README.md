@@ -53,7 +53,7 @@
 
 ## 資格
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。興味がある方は取得方法を教えます。
-- Dockerはおそらく持っていて有用な資格はないです。
+- Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。
 
 ## 勉強用書籍購入について
 - メルカリで安く買うことをお勧めします。
