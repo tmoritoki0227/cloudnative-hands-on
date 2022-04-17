@@ -16,5 +16,5 @@ https://github.com/
 - 勉強したことなどをgithub上に成果として残すことを勧めます。
 
 ## 資格
-- AWS Certified Solutions Architect の資格取得をお奨めします。取得した上で、awsを操作することで理解が深まります。50H程度勉強すれば取得できます。<br>
+- AWS Certified Solutions Architect の資格取得をお奨めします。<br>
 https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/
