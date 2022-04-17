@@ -44,7 +44,7 @@ https://github.com/
 - 勉強したことなどをgithub上に成果として残すことを勧めます。
 
 ## Dockerの知識
-- チーム長がすごい資料を用意しているのでそちらを読んでおきましょう。
+- チーム長がすごい資料を用意しているのでそちらを読んでおきましょう。資料は周知、展開されるのを待ってください。
 
 ## 資格
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。
