@@ -1,4 +1,146 @@
 ## docker-composeのセットアップ
-mitei 
-## docker imageを２つ扱うdocker-compose.yamlを作る演習を想定。
-mitei
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+```
+## docker-compose作成・実行
+```
+# yaml作成
+vi docker-compose.yml
+
+# 起動
+docker-compose up
+
+# バックグラウンドで起動
+docker-compose up -d
+
+# 停止
+docker-compose down
+```
+
+```
+version: '3.5'
+services:
+
+# ----------- prometheus begin ----------- #
+  prometheus:
+    image: prom/prometheus:v2.30.3
+    container_name: prometheus
+    hostname: prometheus
+    volumes:
+      - /data/docker/containers/prometheus/etc/prometheus:/etc/prometheus
+      - /data/docker/containers/prometheus/data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
+    user: root
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.10
+# ----------- prometheus end ----------- #
+
+# ----------- node-exporter begin ----------- #
+  node-exporter:
+    image: prom/node-exporter:v1.2.2
+    container_name: node-exporter
+    ports:
+      - 9100:9100
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.20
+# ----------- node-exporter end ----------- #
+
+# ----------- grafana begin ----------- #
+  grafana:
+    image: grafana/grafana:8.3.4
+    container_name: grafana
+    hostname: grafana
+    volumes:
+      - /data/docker/containers/grafana/data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    user: root
+    env_file:
+      - /data/docker/containers/grafana/grafana.env
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.30
+# ----------- grafana end ----------- #
+
+# ----------- alertmanager begin ----------- #
+  alertmanager:
+    image: prom/alertmanager:v0.23.0
+    container_name: alertmanager
+    hostname: alertmanager
+    volumes:
+      - /data/docker/containers/alertmanager/etc/alertmanager:/etc/alertmanager
+    command:
+      - "--config.file=/etc/alertmanager/config.yml"
+    ports:
+      - 9093:9093
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.40
+# ----------- alertmanager end ----------- #
+
+# ----------- blackbox_exporter begin ----------- #
+  blackbox_exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: blackbox_exporter
+    hostname: blackbox_exporter
+    volumes:
+      - /data/docker/containers/blackbox_exporter:/etc/blackbox_exporter
+    command:
+      - "--config.file=/etc/blackbox_exporter/config.yml"
+    ports:
+      - 9115:9115
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.50
+# ----------- blackbox_exporter end ----------- #
+
+# ----------- grok_exporter start ----------- #
+  grok_exporter:
+    image: dalongrong/grok-exporter:latest
+    container_name: grok_exporter
+    hostname: grok_exporter
+    volumes:
+      - "/data/docker/containers/grok_exporter/example:/opt/example"
+      - "/data/docker/containers/grok_exporter/config.yml:/grok/config.yml"
+    ports:
+      - 9144:9144
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.60
+# ----------- grok_exporter end ----------- #
+
+# ----------- http_server start ----------- #
+  test_httpserver:
+    # image: tmoritoki0227/test_httpserver:latest
+    image: public.ecr.aws/l8s6z2n6/test_httpserver:latest
+    container_name: test_httpserver
+    hostname: test_httpserver
+    ports:
+      - 8080:8080
+      - 8081:8081
+    restart: always
+    networks:
+      prometheus_study_network:
+        ipv4_address: 192.168.0.70
+# ----------- http_server end   ----------- #
+# 結局IP設定は不要な設定だったが、IPの設定方法として残しておく.ホストが同じ場合、コンテナはホスト名で通信すれば良い
+networks:
+  prometheus_study_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
+```
