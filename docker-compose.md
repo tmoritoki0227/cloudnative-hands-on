@@ -99,12 +99,12 @@ $ docker-compose down
 ```
 
 ## nginx動作確認
-http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888/
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888/
 
 ## test_httpserver動作確認
-http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/hello
-http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/world
-http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8081/metrics
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/hello
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080/world
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8081/metrics
 
 ## （参考）nginx設定
 - https://hub.docker.com/_/nginx
