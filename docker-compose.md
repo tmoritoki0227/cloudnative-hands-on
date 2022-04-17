@@ -88,7 +88,7 @@ server {
 
 ## docker-compose起動・停止
 ```bash
-# docker-compose起動
+# docker-compose起動(このあとctrl + cで停止可能）
 $ docker-compose up
 
 # docker-composeバックグラウンドで起動
