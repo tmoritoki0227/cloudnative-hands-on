@@ -155,7 +155,6 @@ $ docker image ls
 $ docker push tmoritoki0227/test_httpserver:latest
 ```
 - `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
-- docker pushの通信料は有料と思われる。
 
 ### dockerイメージ(test_httpserver)を削除する
 ローカルにあるとそれを使ってしまうため。
