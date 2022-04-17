@@ -36,7 +36,7 @@
 ## [Dockerハブ](https://hub.docker.com/)のアカウント作成
 - 持ってない人は事前に作成しておいてください。
 
-## [github](https://github.com/)のアカウント作成
+## [GitHub](https://github.com/)のアカウント作成
 
 - ハンズオンでは必須ではありません。
 - 自分のアカウントを作成しておくことを勧めます。
