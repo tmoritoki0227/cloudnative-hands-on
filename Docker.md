@@ -47,7 +47,7 @@ http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
 https://snowsystem.net/container/docker/nginx/
 
 ## 自分でDockerイメージを作ろう
-https://github.com/kichiram/golang/tree/main/http_server 吉●さんのテスト用webサーバをパクリます。
+https://github.com/kichiram/golang/tree/main/http_server
 ### Dockerfile作成
 ```bash
 $ mkdir ~/docker
