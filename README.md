@@ -45,9 +45,11 @@
 
 ## Awsの事前知識
 - [基本的なシステム構成図を理解するためのAWS基礎をまとめてみた](https://qiita.com/g_ayushi/items/0e0f34d19813b8fdc2b8)を読んでおきましょう。
+- youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
 ## Dockerの事前知識
 - チーム長がすごい資料を用意しているのでそちらを読んでおきましょう。資料は周知、展開されるのを待ってください。
+- youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
 ## 資格
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。興味がある方は取得方法を教えます。
