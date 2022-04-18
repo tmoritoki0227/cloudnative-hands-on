@@ -95,7 +95,7 @@ $ docker image ls
 ```
 `test_httpserver   latest           666b3e1df1b6   About a minute ago   1.31G`のようなものがあるはずです。
 
-### コンテナ起動とバックグラウンド起動
+### コンテナ起動(バックグラウンドで起動）
 ```bash
 $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
