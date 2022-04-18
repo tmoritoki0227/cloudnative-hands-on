@@ -7,19 +7,20 @@
 - チーム目標の資料と[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)を確認しましょう。
 
 ## 目的とゴール
-- 初めてクラウド環境(Aws)を利用する方が自己勉強を始めるためのアシストを行います。
+- クラウド環境(Aws)の利用経験が少ない方に向けて、自己学習を進めるためのサポートを行います。何でも質問してください。
 - クラウド環境(Aws)を利用して[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)のステップ１であるコンテナの利用法や設定法をハンズオン形式で学びます。
-- 各自がクラウド環境(Aws)を利用して自己学習ができる状態になっていることがゴールです。
+- 各自がクラウド環境(Aws)を利用して自己学習が進められる状態になっていることがゴールです。
+- 質問に関しては、ハンズオン以外の内容でも受けます。
 
 ## 注意事項
-- 本勉強会ではAws、Dockerの概念的な説明は実施しません。Dockerの概念的な説明はチーム長がすごい資料を用意しているのでそちらを読んでおきましょう。資料は周知、展開されるのを待ってください。
+- このハンズオン演習ではAws、Dockerの概念的な説明は実施しません。Dockerの概念的な説明はチーム長がすごい資料を用意しているのでそちらを読んでおきましょう。資料は周知、展開されるのを待ってください。
 - 勉強会参加前に[事前準備](#事前準備)をお願いします。
-- Aws無料枠を使えない方は月額費用が発生します。無料枠でも少しは発生する可能性があります。また無料枠を意識すると利用範囲が限られてきますので、あまり意識しないことをお勧めします。
+- Aws無料枠を使えない方は月額費用が発生します。[無料枠](https://aws.amazon.com/jp/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)でも数百円は発生する可能性がありますが、意識すると学習範囲が限られてきますので、あまり意識しないことをお勧めします。いきなり数百円、数千円課金されるものはありません。
 
 ## 学習方法
-- 学習コンテンツに沿ってzoomを利用したオンライン勉強会を実施する。
+- 学習コンテンツに沿ってgoogle meetを利用したオンライン勉強会を実施する。
 - 勉強会の開催は５月以降、月2回、各回1〜２時間程度を予定。時間は参加者の都合も考慮して決定。開催時期の予定は今後発表します。
-- 講師が一方的に説明するのでは無くAWS EC2上でAmazon Linuxを利用して実際に環境構築や設定をしながら適宜質疑応答ができるラフな形式で行なう。
+- AWS EC2上でAmazon Linuxを利用して実際に環境構築や設定をしながら適宜質疑応答ができるラフな形式で行なう。
 
 ## 対象者
 - 田●チームメンバー
@@ -27,7 +28,7 @@
 
 # 事前準備
 ## 勉強用PC
-- 低スペックで良いので１台必要です。
+- １台必要です。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
 
 ## awsのアカウント作成
 - 持ってない人は事前に作成し、AWSマネジメントコンソールにアクセスできる状態にしておいてください。資料は[こちら](https://github.com/kichiram/aws)
@@ -37,7 +38,6 @@
 - 持ってない人は事前に作成しておいてください。
 
 ## [GitHub](https://github.com/)のアカウント作成
-
 - ハンズオンでは必須ではありません。
 - 自分のアカウントを作成しておくことを勧めます。
 - お使いのPCから自分のリポジトリに`git push`ができる状態までセットアップしておくことを勧めます。
@@ -52,8 +52,8 @@
 - youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
 ## 資格
-- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。興味がある方は取得方法を教えます。
-- Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。
+- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。興味がある方は取得方法を教えます。試験費用は15000円、資格取得奨励金は10000円です。
+- Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。試験費用は40000円、資格取得奨励金は10000円です。
 
 ## 勉強用書籍購入について
-- メルカリで安く買うことをお勧めします。
+- 神経質でなければメルカリで安く買うことをお勧めします。
