@@ -7,15 +7,15 @@
 - チーム目標の資料と[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)を確認しましょう。
 
 ## 目的とゴール
-- クラウド環境(Aws)の利用経験が少ない方に向けて、自己学習を進めるためのサポートを行います。何でも質問してください。
+- クラウド環境(Aws)を利用をして自己学習を進める人のサポートを行います。何でも質問してください。
 - クラウド環境(Aws)を利用して[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)のステップ１であるコンテナの利用法や設定法をハンズオン形式で学びます。
-- 各自がクラウド環境(Aws)を利用して自己学習が進められる状態になっていることがゴールです。
+- クラウド環境(Aws)を利用して各自で自己学習が進められる状態になっていることがゴールです。
 - 質問に関しては、ハンズオン以外の内容でも受けます。
 
 ## 注意事項
-- このハンズオン演習ではAws、Dockerの概念的な説明は実施しません。Dockerの概念的な説明はチーム長がすごい資料を用意しているのでそちらを読んでおきましょう。資料は周知、展開されるのを待ってください。
+- このハンズオン演習ではAws、Dockerの概念的な説明は実施しません。
 - 勉強会参加前に[事前準備](#事前準備)をお願いします。
-- Aws無料枠を使えない方は月額費用が発生します。[無料枠](https://aws.amazon.com/jp/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)でも数百円は発生する可能性がありますが、意識すると学習範囲が限られてきますので、あまり意識しないことをお勧めします。いきなり数百円、数千円課金されるものはありません。
+- Aws無料枠を使えない方は月額費用が発生します。無料枠の内容は[こちら](https://aws.amazon.com/jp/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
 
 ## 学習方法
 - 学習コンテンツに沿ってgoogle meetを利用したオンライン勉強会を実施する。
@@ -32,7 +32,7 @@
 
 ## awsのアカウント作成
 - 持ってない人は事前に作成し、AWSマネジメントコンソールにアクセスできる状態にしておいてください。資料は[こちら](https://github.com/kichiram/aws)
-- 最近EC2作成のUIがかなり変わりました。わかりやすくなりました。手順書と画面が異なります。
+- 最近EC2作成のUIがかなり変わりました。わかりやすくなりましたが、資料と画面が異なります。
 
 ## [Dockerハブ](https://hub.docker.com/)のアカウント作成
 - 持ってない人は事前に作成しておいてください。
