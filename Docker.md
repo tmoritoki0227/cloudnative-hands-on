@@ -43,8 +43,7 @@ http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
 - ブラウザから
 http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
 アクセスできることを確認
-- この作業の詳細は以下を参考にしてください。
-https://snowsystem.net/container/docker/nginx/
+- この作業の詳細は[こちら](https://snowsystem.net/container/docker/nginx/)を参考にしてください。
 
 ## 自分でDockerイメージを作ろう
 ここで使うアプリーケーションは[こちら](https://github.com/kichiram/golang/tree/main/http_server)
