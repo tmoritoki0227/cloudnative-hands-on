@@ -102,8 +102,9 @@ $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver
 ```
 
 ### port解放
-- 8080
-- 8081
+- ssh 22 自分のPCのIP
+- tcp 8080
+- tcp 8081
 
 ### ブラウザから動作確認
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
