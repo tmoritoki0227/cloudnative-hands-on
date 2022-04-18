@@ -52,7 +52,7 @@
 - youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
 ## 資格
-- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお奨めします。興味がある方は取得方法を教えます。試験費用は15000円、資格取得奨励金は10000円です。
+- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお勧めします。興味がある方は取得方法を教えます。試験費用は15000円、資格取得奨励金は10000円です。
 - Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。試験費用は40000円、資格取得奨励金は10000円です。
 
 ## 勉強用書籍購入について
