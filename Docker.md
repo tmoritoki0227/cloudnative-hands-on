@@ -14,13 +14,13 @@ $ sudo systemctl status docker
 $ sudo systemctl enable docker
 $ sudo usermod -a -G docker ec2-user
 
-## 現行ユーザをdockerグループに所属させる
+# 現行ユーザをdockerグループに所属させる
 $ sudo gpasswd -a $USER docker
 
-## dockerデーモンを再起動する (CentOS7の場合)
+# dockerデーモンを再起動する (CentOS7の場合)
 $ sudo systemctl restart docker
 
-## exitして再ログインすると反映される。
+# exitして再ログインすると反映される。
 $ exit
 
 $ docker -v
