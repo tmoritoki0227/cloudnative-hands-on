@@ -2,9 +2,9 @@
 これらの操作を覚えてください。参考資料は[こちら](https://github.com/kichiram/aws)
 - インスタンス（サーバ）の作成、osはamazonlinuxで。
 - ポート解放
-- 起動・停止
+- インスタンス（サーバ）起動・停止
 - インスタンス（サーバ）へのsshログイン
-- 削除
+- インスタンス（サーバ）削除
 
 ## ec2を作っただけのときのシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
