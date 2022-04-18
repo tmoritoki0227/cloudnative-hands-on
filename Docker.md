@@ -102,7 +102,6 @@ $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver
 ```
 
 ### port解放
-- ssh 22 自分のPCのIP
 - tcp 8080
 - tcp 8081
 
