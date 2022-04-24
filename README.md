@@ -29,9 +29,9 @@
 
 # 事前準備
 ## PC
-- 個人用PCが１台必要です。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
+- 個人用PCを１台用意してください。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
 
-## awsのアカウント作成
+## Awsのアカウント作成
 - 持ってない人は事前に作成しておいてください。資料は[こちら](https://github.com/kichiram/aws)
 
 ## [Dockerハブ](https://hub.docker.com/)のアカウント作成
