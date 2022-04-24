@@ -7,10 +7,10 @@
 - チーム目標の資料と[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)を確認しましょう。
 
 ## 目的とゴール
-- クラウド環境(Aws)を利用をして自己学習を進める人のサポートを行います。何でも質問してください。
+- クラウド環境(Aws)を利用をして自己学習を進める人のサポートを行います。
 - クラウド環境(Aws)を利用して[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)のステップ１であるコンテナの利用法や設定法をハンズオン形式で学びます。
 - クラウド環境(Aws)を利用して各自で自己学習が進められる状態になっていることがゴールです。
-- 質問は、ハンズオン以外の内容でも受けます。
+- 質問はハンズオン以外の内容でも受けます。自己の今期目標達成に役立ててください。
 
 ## 注意事項
 - このハンズオン演習ではAws、Dockerの概念的な説明は実施しません。
@@ -54,7 +54,8 @@
 
 ## 資格
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお勧めします。興味がある方は取得方法を教えます。試験費用は15000円、資格取得奨励金は10000円です。
-  - 代わりにazureやgcpの勉強してもOK。こちらは持っている人が少ないので差別化できます。持ってる理由がすくないのはawsほど参考書とかが充実してないからです。
+  - 代わりにazureやgcpの勉強してもOK。
+  - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
 - Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。試験費用は40000円、資格取得奨励金は10000円です。
 
 ## 勉強用書籍購入について
