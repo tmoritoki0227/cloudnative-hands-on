@@ -21,4 +21,4 @@
 
 ## awsが推奨しているシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699639-9ffaef8b-3363-42e3-832b-9e92907ae501.png)
-- こんな感じです。
+- こんな感じです。この演習では覚える必要はありません。
