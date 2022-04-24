@@ -33,7 +33,6 @@
 
 ## awsのアカウント作成
 - 持ってない人は事前に作成し、AWSマネジメントコンソールにアクセスできる状態にしておいてください。資料は[こちら](https://github.com/kichiram/aws)
-- 最近EC2作成のUIがかなり変わりました。わかりやすくなりましたが、資料と画面が異なります。
 - [二段階認証設定](https://qiita.com/s_Pure/items/76011e67e9a10c7c195c)をお勧めします
 
 ## [Dockerハブ](https://hub.docker.com/)のアカウント作成
