@@ -1,12 +1,20 @@
 ## Awsを使ってEC2に関して以下の練習を行います。
-これらの操作を覚えてください。参考資料は[こちら](https://github.com/kichiram/aws)
-- インスタンス（サーバ）の作成、osはamazonlinuxで。
-  - IPはインスタンスの停止起動すると変わります。再起動では変わりません。
-- インスタンス（サーバ）のポート解放（これは正確にはセキュリティグループの設定です）
-- インスタンス（サーバ）起動・停止
-- インスタンス（サーバ）へのsshログイン
-- インスタンス（サーバ）削除
-
+[資料](https://github.com/kichiram/aws)を参考に以下の操作を覚えてください。
+- インスタンスの作成、osはamazonlinuxで。
+  - 無料枠の利用範囲内ではIPはインスタンスの停止起動すると変わります。再起動では変わりません。
+- インスタンスのポート解放
+  - 自宅のグローバルIPを許可しないとインスタンスにsshできません 
+- インスタンス起動・停止
+  - 自動停止する方法
+    - [EC2 インスタンスの起動と停止を自動化することは出来ますか？](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
+    - [Lambda を使用して、Amazon EC2 インスタンスを一定の間隔で停止および起動するにはどうすればよいですか?](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
+- インスタンスへのsshログイン
+- インスタンス削除（終了）
+- AwsCLI（任意）
+  - awsを操作するコマンドです。
+  - [AWS CLIを利用するメリットと導入方法](https://www.cloudsolution.tokai-com.co.jp/white-paper/2021/0617-239.html)
+  - [AWS CLIとは？インストール手順や使い方を初心者向けに解説！](https://udemy.benesse.co.jp/development/system/aws-cli.html)
+　
 ## ec2を作っただけのときのシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
 - vpc、サブネットは自動で作成してくれています。
