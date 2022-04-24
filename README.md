@@ -54,9 +54,10 @@
 ## 資格
 - 資格を取る理由
   - お金を稼ぐためです。技能を持つことを証明できます。勉強会に参加しても何も証明されません。
+    - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
   - 勉強のゴールとして明確だからです。 
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお勧めします。興味がある方は取得方法を教えます。試験費用は15000円、資格取得奨励金は10000円です。azureやgcpの勉強してもOK。
-  - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
+
 - Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。試験費用は40000円、資格取得奨励金は10000円です。
 
 ## 勉強用書籍購入について
