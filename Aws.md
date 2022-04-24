@@ -18,10 +18,10 @@
   - [AWS CLIを利用するメリットと導入方法](https://www.cloudsolution.tokai-com.co.jp/white-paper/2021/0617-239.html)
   - [AWS CLIとは？インストール手順や使い方を初心者向けに解説！](https://udemy.benesse.co.jp/development/system/aws-cli.html)
 　
-## ec2を作っただけのときのシステム構成図
+## インスタンスを作っただけのときのシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
 - vpc、サブネットは自動で作成してくれています。
 
 ## awsが推奨しているシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699639-9ffaef8b-3363-42e3-832b-9e92907ae501.png)
-- こんな感じです。この演習では覚える必要はありません。
+- こんな感じで障害耐性が取られています。この演習では覚える必要はありません。
