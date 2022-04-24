@@ -7,7 +7,7 @@
   - 自動停止する方法（費用が心配な人は設定しましょう）
     - [EC2 インスタンスの起動と停止を自動化することは出来ますか？](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
     - [Lambda を使用して、Amazon EC2 インスタンスを一定の間隔で停止および起動するにはどうすればよいですか?](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
-- インスタンスのポート解放
+- ポート解放
   - 自宅のグローバルIPを許可しないとインスタンスにsshできません 
 - インスタンスへのsshログイン
   - ec2-userはsudoパスワードは無しになってます。
