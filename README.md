@@ -12,13 +12,13 @@
 - クラウド環境(Aws)を利用して各自で自己学習が進められる状態になっていることがゴールです。
 - 質問はハンズオン以外の内容でも受けます。自己の今期目標達成に役立ててください。
 
-
 ## 学習方法
 - [学習コンテンツ](https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/study-contents.md)に沿ってgoogle meetを利用したオンライン勉強会を実施する。
-- 勉強会の開催は５月以降、月2回、各回1〜２時間程度を予定。時間は参加者の都合も考慮して決定。
+- 勉強会の開催は月2回、各回1〜２時間程度を予定。時間は参加者の都合も考慮して決定。
 - AWS EC2上でAmazon Linuxを利用して実際に環境構築や設定をしながら適宜質疑応答ができるラフな形式で行なう。
 - この勉強会ではAws、Dockerの概念的な説明は実施しません。
 - 勉強会参加前に[事前準備](#事前準備)をお願いします。
+- やってほしいことのリクエストがあれば随時相談ください。
 
 ## 対象者
 - 田●チームメンバー
@@ -41,7 +41,7 @@
 - ハンズオンでは必須ではありません。
 - 自分のアカウントを作成しておくことをお勧めます。
 - お使いのPCから自分のリポジトリに`git push`ができる状態までセットアップしておくことをお勧めします。
-- 勉強したことのメモなどをgithub上に残すことをお勧めます。理由はメモを取った方が記憶に残りやすいからです。また活動の成果として残ることにもなります。
+- 勉強したことのメモなどをGitHub上に残すことをお勧めます。活動の成果として残ることになります。
 
 ## Awsの事前知識
 - [基本的なシステム構成図を理解するためのAWS基礎をまとめてみた](https://qiita.com/g_ayushi/items/0e0f34d19813b8fdc2b8)を読んでおきましょう。
@@ -56,12 +56,11 @@
   - お金を稼ぐためです。技能を持つことを証明できます。勉強会に参加しても何も証明されません。
     - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
   - 勉強のゴールとして明確だからです。 
-- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を本年度取得をお勧めします。興味がある方は取得方法を教えます。受験料は15000円。azureやgcpの勉強してもOK。
-
-- Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。受験料は40000円です。
+- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を取得をお勧めします。興味がある方は取得方法を教えます。受験料は15000円。azureやgcpの勉強してもOK。
+- Dockerはおそらく価値のある資格はありません。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。受験料は40000円です。
 
 ## 勉強用書籍購入方法
 - 神経質でなければメルカリで安く買うことをお勧めします。
 
 ## 吉●さん
-- 資料を流用しているので感謝しときましょう。
+- 資料を流用しているので感謝しましょう。
