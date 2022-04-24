@@ -60,7 +60,7 @@
 
 - Dockerはおそらく有用な資格はないです。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。受験料は40000円です。
 
-## 勉強用書籍購入について
+## 勉強用書籍購入方法
 - 神経質でなければメルカリで安く買うことをお勧めします。
 
 ## 吉●さん
