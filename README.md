@@ -18,10 +18,9 @@
 - Aws無料枠を使えない方は月額費用が発生します。無料枠の内容は[こちら](https://aws.amazon.com/jp/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
 
 ## 学習方法
-- 学習コンテンツに沿ってgoogle meetを利用したオンライン勉強会を実施する。
+- [学習コンテンツ](https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/study-contents.md)に沿ってgoogle meetを利用したオンライン勉強会を実施する。
 - 勉強会の開催は５月以降、月2回、各回1〜２時間程度を予定。時間は参加者の都合も考慮して決定。
 - AWS EC2上でAmazon Linuxを利用して実際に環境構築や設定をしながら適宜質疑応答ができるラフな形式で行なう。
-- 要望があれば1対１で教えることも可能です。
 
 ## 対象者
 - 田●チームメンバー
@@ -29,7 +28,7 @@
 
 # 事前準備
 ## PC
-- １台必要です。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
+- 個人用PCが１台必要です。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
 
 ## awsのアカウント作成
 - 持ってない人は事前に作成し、AWSマネジメントコンソールにアクセスできる状態にしておいてください。資料は[こちら](https://github.com/kichiram/aws)
