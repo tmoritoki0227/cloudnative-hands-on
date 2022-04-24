@@ -5,9 +5,7 @@
   - 最近インスタンス作成のUIがかなり変わりましたので、資料と画面が異なります。
 - インスタンス起動・停止
   - 無料枠の利用範囲内ではIPはインスタンスの停止起動すると変わります。再起動では変わりません。
-  - 自動停止する方法（費用が心配な人は設定しましょう）
-    - [EC2 インスタンスの起動と停止を自動化することは出来ますか？](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
-    - [Lambda を使用して、Amazon EC2 インスタンスを一定の間隔で停止および起動するにはどうすればよいですか?](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
+
 - ポート解放
   - 自宅のグローバルIPを許可しないとインスタンスにsshできません 
 - インスタンスへのsshログイン
@@ -16,6 +14,9 @@
 - 費用の確認方法
 ## 任意設定作業
 興味があれば実施してください。
+- インスタンス自動停止設定（費用が心配な人は設定しましょう）
+  - [EC2 インスタンスの起動と停止を自動化することは出来ますか？](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
+  - [Lambda を使用して、Amazon EC2 インスタンスを一定の間隔で停止および起動するにはどうすればよいですか?](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
 - AwsCLI
   - [AWS CLIを利用するメリットと導入方法](https://www.cloudsolution.tokai-com.co.jp/white-paper/2021/0617-239.html)
   - [AWS CLIとは？インストール手順や使い方を初心者向けに解説！](https://udemy.benesse.co.jp/development/system/aws-cli.html)
