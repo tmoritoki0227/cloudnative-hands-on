@@ -14,11 +14,12 @@
   - ec2-userはsudoパスワードは無しになってます。
 - インスタンス削除（終了）
 - 費用の確認方法
-- AwsCLI（任意）
+- （任意）AwsCLI
   - awsを操作するコマンドです。
   - [AWS CLIを利用するメリットと導入方法](https://www.cloudsolution.tokai-com.co.jp/white-paper/2021/0617-239.html)
   - [AWS CLIとは？インストール手順や使い方を初心者向けに解説！](https://udemy.benesse.co.jp/development/system/aws-cli.html)
-　
+- （任意）[AWSアカウント作成後に絶対にやるべき初期設定5項目：前半](https://kacfg.com/aws-first-config_1/)
+
 ## インスタンスを作っただけのときのシステム構成図
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
 - vpc、サブネットは自動で作成してくれています。
