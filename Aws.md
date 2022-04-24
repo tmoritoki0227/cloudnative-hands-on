@@ -2,14 +2,15 @@
 [資料](https://github.com/kichiram/aws)を参考に以下の操作を覚えてください。リージョンは東京を使います。
 - インスタンスの作成
   - osはamazonlinuxで。
-  - 無料枠の利用範囲内ではIPはインスタンスの停止起動すると変わります。再起動では変わりません。
 - インスタンスのポート解放
   - 自宅のグローバルIPを許可しないとインスタンスにsshできません 
 - インスタンス起動・停止
+　- 無料枠の利用範囲内ではIPはインスタンスの停止起動すると変わります。再起動では変わりません。
   - 自動停止する方法（費用が心配な人は設定しましょう）
     - [EC2 インスタンスの起動と停止を自動化することは出来ますか？](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
     - [Lambda を使用して、Amazon EC2 インスタンスを一定の間隔で停止および起動するにはどうすればよいですか?](https://dev.classmethod.jp/articles/tsnote-ec2-ssm-automation/)
 - インスタンスへのsshログイン
+  - ec2-userはsudoパスワードは無しになってます。
 - インスタンス削除（終了）
 - 費用の確認方法
 - AwsCLI（任意）
