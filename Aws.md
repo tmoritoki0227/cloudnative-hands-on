@@ -4,18 +4,18 @@
   - osはamazonlinuxで。
   - 最近インスタンス作成のUIがかなり変わりましたので、資料と画面が異なります。
 - インスタンス起動・停止
-  - インスタンスの停止起動すると変わります。再起動では変更されません。有料で固定IPを使うことはできます。
+  - インスタンスの停止起動するとIPは変わります。再起動では変更されません。有料で固定IPを使うことはできます。
 - ポート解放
   - 自宅のグローバルIPを許可しないとインスタンスにsshできません。0.0.0.0/0　は全てのIPを許可です。
 - インスタンスへのsshログイン
-  - ec2-userはsudoパスワードは無しになってます。
 - インスタンス削除（終了）
 - 費用の確認方法
 
-## 試しにnginx導入してみる
-- nginxインストール
+## ちょっと適当にセットアップしてみよう
+ec2-userはsudoパスワードは無しになってます。
+### nginxインストール
 ```
-$ sudo amazon-linux-extras install nginx1 -y # awsではこのコマンドです。
+$ sudo amazon-linux-extras install nginx1 -y # awsでnginxをインストールするコマンドはこうなります。
 $ sudo systemctl enable nginx # 自動起動設定
 $ sudo systemctl start nginx　 # nginx起動
 $ sudo systemctl status nginx # Active: active (running)であること
@@ -24,6 +24,30 @@ $ sudo systemctl status nginx # Active: active (running)であること
 http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
 - セキュリティグループのインバウンドのルールの編集でport:80を解放
 - 再度ブラウザでアクセス.画面が表示されます
+
+### gitインストール
+```
+$ sudo yum install git
+$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
+```
+
+## よく耳にするAWS Lambdaをやってみよう
+簡単にいうとサーバなしでプログラムを実行する方法です。画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
+- Lambda画面で
+  - 一から作成
+  - 関数名: myfunction   # これがURLになります
+  - ランタイム: Python 3.9   (何でもいいと思います）
+  - アーキテクチャ：　x８６_６４
+  - 関数の作成ボタン押下。"Hello, from Lambda"を返すだけの関数が作成されます。
+- API Gatewayの画面で
+  - HTTP APIの構築ボタン押下
+  - 統合： Lambdaを選択、
+  - api名: my-http-api
+  - あとはデフォルトのままで進める。URL を呼び出すのURLをコピーする
+- ブラウザからアクセス
+  - https://p73v0e26mf.execute-api.ap-northeast-1.amazonaws.com/myfunction
+  - "Hello from Lambda!"が表示されればOK
+
 
 ## インスタンスを作っただけのときのシステム構成図の紹介
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
