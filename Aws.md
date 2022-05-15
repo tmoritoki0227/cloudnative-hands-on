@@ -32,10 +32,11 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 ```
 他にも試してみてください。
 
-## よく耳にするAWS Lambdaをやってみよう
-簡単にいうとサーバなしでプログラムを実行する方法です。画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
+## 他のサービスを試してみよう。
+よく耳にするAWS Lambdaをやってみます。Lambdaとは簡単にいうとサーバなしでプログラムを実行する方法です。ここではブラウザにアクセスすると"Hello, from Lambda"を表示するプログラムを作ります。
+
 - Lambda画面で
-  - 一から作成
+  - "一から作成"を選択
   - 関数名: myfunction   # これがURLになります
   - ランタイム: Python 3.9   (何でもいいと思います）
   - アーキテクチャ：　x８６_６４
@@ -49,6 +50,7 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
   - https://p73v0e26mf.execute-api.ap-northeast-1.amazonaws.com/myfunction
   - "Hello from Lambda!"が表示されればOK
 
+画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
 
 ## インスタンスを作っただけのときのシステム構成図の紹介
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
