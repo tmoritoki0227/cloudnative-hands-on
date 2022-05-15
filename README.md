@@ -27,12 +27,16 @@
 ## 注意事項
 - Aws無料枠を使えない方は月額費用が発生します。無料枠の内容は[こちら](https://aws.amazon.com/jp/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
 
+## 講師スペック
+- AWS Certified Solutions Architectの資格を持ってますが、Aws実務経験はありません。
+- CI/CDによく携わる業務についてます。
+
 # 事前準備
 ## PC
 - 個人用PCを１台用意してください。スペックはgoogle meetが快適に動いてくれれば大丈夫だと思います。ハードウェア要件は[こちら](https://support.google.com/meet/answer/7317473?hl=ja#zippy=%2C%E6%8E%A8%E5%A5%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2)
 
 ## Awsのアカウント作成
-- 持ってない人は事前に作成しておいてください。資料は[こちら](https://github.com/kichiram/aws)
+- 持ってない人は事前にアカウント作成しておいてください。資料は[こちら](https://github.com/kichiram/aws)
 
 ## [Dockerハブ](https://hub.docker.com/)のアカウント作成
 - 持ってない人は事前に作成しておいてください。
@@ -41,7 +45,7 @@
 - ハンズオンでは必須ではありません。
 - 自分のアカウントを作成しておくことをお勧めます。
 - お使いのPCから自分のリポジトリに`git push`ができる状態までセットアップしておくことをお勧めします。
-- 勉強したことのメモなどをGitHub上に残すことをお勧めます。活動の成果として残ることになります。
+- GitHubに限らず、クラウド上に成果を残す方法を検討ください。googleドライブ等
 
 ## Awsの事前知識
 - [基本的なシステム構成図を理解するためのAWS基礎をまとめてみた](https://qiita.com/g_ayushi/items/0e0f34d19813b8fdc2b8)を読んでおきましょう。
@@ -53,7 +57,7 @@
 
 ## 資格
 - 資格を取る理由
-  - お金を稼ぐためです。技能を持つことを証明できます。勉強会に参加しても何も証明されません。
+  - お金を稼ぐためです。技能を持つことを証明できます。
     - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
   - 勉強のゴールとして明確だからです。 
 - [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を取得をお勧めします。興味がある方は取得方法を教えます。受験料は15000円。azureやgcpの勉強してもOK。
