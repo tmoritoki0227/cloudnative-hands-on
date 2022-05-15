@@ -11,7 +11,7 @@
 - インスタンス削除（終了）
 - 費用の確認方法
 
-## ちょっと適当にセットアップしてみよう
+## 適当にセットアップしてみよう
 ec2-userはsudoパスワードは無しになってます。
 ### nginxインストール
 ```
@@ -30,6 +30,7 @@ http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
 $ sudo yum install git
 $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 ```
+他にも試してみてください。
 
 ## よく耳にするAWS Lambdaをやってみよう
 簡単にいうとサーバなしでプログラムを実行する方法です。画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
