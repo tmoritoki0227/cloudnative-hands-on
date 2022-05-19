@@ -6,6 +6,7 @@
 ## なぜクラウドネイティブのエンジニアを目指すのか？
 - チーム目標の資料と[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)を確認しましょう。
 
+
 ## 目的とゴール
 - クラウドネイティブのエンジニアを目指し、新しく一歩を踏み出そうとしている方をサポートします。
 - クラウド環境(Aws)を利用して[Cloud Native Trail Map](https://thinkit.co.jp/article/18243)のステップ１であるコンテナの利用法や設定法をハンズオン形式で学びます。
@@ -48,6 +49,7 @@
 - GitHubに限らず、クラウド上に成果を残す方法を検討ください。googleドライブ等
 
 ## Awsの事前知識
+- https://github.com/kaduki6920/claudnative-lecture を読んでおきましょう。
 - [基本的なシステム構成図を理解するためのAWS基礎をまとめてみた](https://qiita.com/g_ayushi/items/0e0f34d19813b8fdc2b8)を読んでおきましょう。
 - youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
