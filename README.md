@@ -17,7 +17,7 @@
 - [学習コンテンツ](https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/study-contents.md)に沿ってgoogle meetを利用したオンライン勉強会を実施する。
 - 勉強会の開催は月2回、各回1〜２時間程度を予定。時間は参加者の都合も考慮して決定。
 - AWS EC2上でインスタンスを利用して実際に環境構築や設定をしながら適宜質疑応答ができるラフな形式で行なう。
-- この勉強会ではAws、Dockerの概念的な説明は実施しません。
+- この勉強会ではAws、Dockerの概念的な説明は実施しません。必要であれば[こちら](https://github.com/kaduki6920/claudnative-lecture)を参照ください。
 - 勉強会参加前に[事前準備](#事前準備)をお願いします。
 - やってほしいことのリクエストがあれば随時相談ください。
 
@@ -52,7 +52,6 @@
 - GitHubに限らず、クラウド上に成果を残す方法を検討ください。googleドライブ等
 
 ## Awsの事前知識
-- https://github.com/kaduki6920/claudnative-lecture を読んでおきましょう。
 - [基本的なシステム構成図を理解するためのAWS基礎をまとめてみた](https://qiita.com/g_ayushi/items/0e0f34d19813b8fdc2b8)を読んでおきましょう。
 - youtubeでたくさん解説動画ありますので、自分にあったものを見つけることをお勧めします。
 
