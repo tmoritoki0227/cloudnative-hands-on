@@ -16,7 +16,7 @@
 sudoコマンドを使いますが、ec2-userのデフォルトのsudoパスワードは設定されていません。
 ### nginxインストール
 ```
-$ sudo amazon-linux-extras install nginx1 -y # awsでnginxをインストールするコマンドはこうなります。
+$ sudo amazon-linux-extras install nginx1 -y 
 $ sudo systemctl enable nginx # 自動起動設定
 $ sudo systemctl start nginx　 # nginx起動
 $ sudo systemctl status nginx # Active: active (running)であること
