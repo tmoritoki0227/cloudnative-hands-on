@@ -13,7 +13,7 @@
 - 費用の確認方法
 
 ## 適当にセットアップしてみよう
-ec2-userはsudoパスワードは無しになってます。
+sudoコマンドを使いますが、ec2-userのデフォルトのsudoパスワードは設定されていません。
 ### nginxインストール
 ```
 $ sudo amazon-linux-extras install nginx1 -y # awsでnginxをインストールするコマンドはこうなります。
