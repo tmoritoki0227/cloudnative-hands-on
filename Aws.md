@@ -21,7 +21,7 @@ $ sudo systemctl enable nginx # 自動起動設定
 $ sudo systemctl start nginx　 # nginx起動
 $ sudo systemctl status nginx # Active: active (running)であること
 ```
-- ブラウザでアクセスしてみる。エラーになります。IPは自分のIPに読み替えてください。
+- ブラウザでアクセスしてみる。エラーになります。IPは自分のIPに読み替えてください。httpです。httpsは動きません。
 http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
 - セキュリティグループのインバウンドのルールの編集でport:80を解放
 - 再度ブラウザでアクセス.画面が表示されます
