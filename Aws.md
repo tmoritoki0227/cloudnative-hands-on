@@ -75,4 +75,4 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
   - [AWS CLIを利用するメリットと導入方法](https://www.cloudsolution.tokai-com.co.jp/white-paper/2021/0617-239.html)
   - [AWS CLIとは？インストール手順や使い方を初心者向けに解説！](https://udemy.benesse.co.jp/development/system/aws-cli.html)
 - [AWSアカウント作成後に絶対にやるべき初期設定5項目：前半](https://kacfg.com/aws-first-config_1/)
-
+  - ルートアカウントにMFAを設定する、はおすすめ
