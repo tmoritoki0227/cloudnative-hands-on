@@ -53,6 +53,11 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 
 画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
 
+## 演習はここままで終了です。課金が不安な人は作ったものを削除しましょう
+- インスタンス
+- Lambda
+- API Gateway
+
 ## インスタンスを作っただけのときのシステム構成図の紹介
 ![image](https://user-images.githubusercontent.com/20149115/163699566-6b8a83c3-ca91-4e92-bd6f-be10d0d5bb13.png)
 - vpc、サブネットは自動で作成してくれています。
