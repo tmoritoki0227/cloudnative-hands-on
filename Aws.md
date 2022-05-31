@@ -29,8 +29,8 @@ $ sudo systemctl status nginx # Active: active (running)であること
 ```
 - ブラウザでアクセスしてみる。プロトコルはhttpで、IPは利用しているインスタンスのIP（パブリックDNS)に読み替えてください。アクセスするとポート開放されてないのでエラーになります。
   - http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
-- セキュリティグループのインバウンドのルールの編集でport:80を解放
-- 再度ブラウザでアクセス.画面が表示されます
+- セキュリティグループのインバウンドのルールの編集でport:80を開放
+- 再度ブラウザでアクセスするとnginxのwelcome画面が表示されます
 
 ### gitインストール
 ```
