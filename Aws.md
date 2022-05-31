@@ -27,8 +27,8 @@ $ sudo systemctl enable nginx # 自動起動設定
 $ sudo systemctl start nginx　 # nginx起動
 $ sudo systemctl status nginx # Active: active (running)であること
 ```
-- ブラウザでアクセスしてみる。エラーになります。IPは自分のIPに読み替えてください。httpです。httpsは動きません。
-http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
+- ブラウザでアクセスしてみる。プロトコルはhttpで、IPは利用しているインスタンスのIP（パブリックDNS)に読み替えてください。アクセスするとポート開放されてないのでエラーになります。
+  - http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
 - セキュリティグループのインバウンドのルールの編集でport:80を解放
 - 再度ブラウザでアクセス.画面が表示されます
 
@@ -54,9 +54,10 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
   - HTTP APIの構築ボタン押下
   - 統合： Lambdaを選択、
   - api名: my-http-api
-  - あとはデフォルトのままで進める。URL を呼び出すのURLをコピーする
+  - あとはデフォルトのままで進める。URLを呼び出すのURLをコピーする
 ### ブラウザからアクセス
-  - https://p73v0e26mf.execute-api.ap-northeast-1.amazonaws.com/myfunction
+  - https://[コピーしたAPIのURL]/myfunction
+    - 例) https://p73v0e26mf.execute-api.ap-northeast-1.amazonaws.com/myfunction
   - "Hello from Lambda!"が表示されればOK
 ### 課金について
   - プログラムにアクセスすると課金が発生する仕組みになっています。利用されない間は課金されません。
