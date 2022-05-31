@@ -1,5 +1,6 @@
 ## EC2の基本的な操作
 [資料](https://github.com/kichiram/aws)を参考に以下の操作に慣れてください。リージョンは東京を使います。
+- `ec2`の画面を開く。画面上部の検索窓に`ec2`と入力
 - インスタンスの作成（起動）
   - osはamazonlinuxで。
   - 最近インスタンス作成のUIがかなり変わりましたので、資料と画面が異なります。
@@ -32,26 +33,28 @@ $ sudo yum install git
 $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 ```
 他にも試してみてください。
+### 課金について
+- インスタンスが起動している時間分だけ課金されます。
 
 ## 他のサービスを試してみよう。
-よく耳にするAWS Lambdaをやってみます。Lambdaとは簡単にいうとサーバなしでプログラムを実行する方法です。ここではブラウザにアクセスすると"Hello, from Lambda"を表示するプログラムを作ります。
+よく耳にするAWS Lambdaをやってみます。Lambdaとは簡単にいうとサーバなしでプログラムを実行する方法です。ここではブラウザにアクセスすると"Hello, from Lambda"を表示するプログラムを作ります。そしてAPI GatewayでそのLambdaプログラムにブラウザ等からアクセスできるように設定をします。画像付きの説明を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
 
-- Lambda画面で
+### `Lambda`の画面を開いて（画面上部の検索窓に`Lambda`と入力）
   - "一から作成"を選択
   - 関数名: myfunction
   - ランタイム: Python 3.9   (何でもいいと思います）
   - アーキテクチャ：　x８６_６４
-  - 関数の作成ボタン押下。"Hello, from Lambda"を返すだけの関数が作成されます。
-- API Gatewayの画面で
+  - 関数の作成ボタン押下。"Hello, from Lambda"を返すだけの関数（プログラム）が作成されます。
+### `API Gateway`の画面で（画面上部の検索窓に`API Gateway`と入力）
   - HTTP APIの構築ボタン押下
   - 統合： Lambdaを選択、
   - api名: my-http-api
   - あとはデフォルトのままで進める。URL を呼び出すのURLをコピーする
-- ブラウザからアクセス
+### ブラウザからアクセス
   - https://p73v0e26mf.execute-api.ap-northeast-1.amazonaws.com/myfunction
   - "Hello from Lambda!"が表示されればOK
-
-画像を見たい方は[資料](https://predora005.hatenablog.com/entry/2021/05/08/190000)を参考にしてください
+### 課金について
+  - プログラムにアクセスすると課金が発生する仕組みになっています。利用されない間は課金されません。
 
 ## 演習はここままで終了です。課金が不安な人は作ったものを削除しましょう
 - インスタンス
