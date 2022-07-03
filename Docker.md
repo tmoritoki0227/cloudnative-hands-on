@@ -153,7 +153,7 @@ Login Succeededが表示されれば成功
 作成したtest_httpserverをアップロードします。これもアップロードするときのお決まりの手順です。
 ```bash
 $ docker image ls # 現在の状態を確認
-$ docker tag test_httpserver tmoritoki0227/test_httpserver:latest # tag付けします。
+$ docker tag test_httpserver tmoritoki0227/test_httpserver:latest # 説明できませんがtag付けが必要です。
 $ docker image ls # 現在の状態を確認
 $ docker push tmoritoki0227/test_httpserver:latest # アップロードします。
 ```
