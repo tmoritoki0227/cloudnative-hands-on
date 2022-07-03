@@ -2,7 +2,7 @@
 - [EC2にdockerインストール](#EC2にdockerインストール)
 - [nginxオフィシャルDockerイメージを利用してみよう](#nginxオフィシャルDockerイメージを利用してみよう)
 - [自分でDockerイメージを作ろう](#自分でDockerイメージを作ろう)
-- [dockerhubへ作成したDockerイメージをアップロード](#dockerhubへ作成したDockerイメージをアップロード)
+- [DockerHubへ作成したDockerイメージをアップロード](#DockerHubへ作成したDockerイメージをアップロード)
 - [後始末](#後始末)
 
 
