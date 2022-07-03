@@ -7,6 +7,7 @@
 
 
 ## EC2にdockerインストール
+これはお決まりの手順です。
 ```ShellSession
 $ sudo yum install -y docker
 $ sudo systemctl start docker
@@ -29,12 +30,12 @@ $ docker -v
 ## [nginxオフィシャルDockerイメージ](https://hub.docker.com/_/nginx)を利用してみよう
 
 ```
-$ docker pull nginx
-$ docker image ls
-$ docker run -d --name nginx-test -p 8888:80 nginx
-$ docker ps
-$ docker container stop nginx-test
-$ docker ps
+$ docker pull nginx # DockerHubで公開されているnginxをpullします。
+$ docker image ls # pullしたimageを確認します
+$ docker run -d --name nginx-test -p 8888:80 nginx # 8888でリクエストを受けて、コンテナがLISTENしているport 80に受け流す意味です
+$ docker ps　# コンテナの状態を確認します
+$ docker container stop nginx-test # コンテナを停止します。
+$ docker ps  # コンテナの状態を確認します
 ```
 - ブラウザから
 http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
@@ -112,14 +113,14 @@ $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver
 
 ### 起動中のコンテナに入る
 ```bash
-$ docker ps
 $ docker exec -it test_httpserver /bin/bash
-$ ls # 任意のコマンド実行
-$ exit
-$ docker ps
+
+$ ls # ここはコンテナ内で実行するコマンドです。任意のコマンド実行
+$ exit # コンテナから抜ける
+
 $ docker container stop test_httpserver
 $ docker ps
-$ docker ps -a
+$ docker ps -a # -aをつけると停止したコンテナも表示されます。
 ```
 
 ### 作ったコンテナを停止、削除
@@ -130,37 +131,37 @@ $ docker rm test_httpserver
 ```
 
 ## 作成したDockerイメージをDockerHubへアップロード
-
-### 参考Doc
-- https://gray-code.com/blog/container-image-push-for-dockerhub/
+ここで行う作業は[こちら](https://gray-code.com/blog/container-image-push-for-dockerhub/)を参考にしています。
 
 ### docker hub ブラウザからログイン
 https://hub.docker.com/
 
-### コマンドでdocker hub ログイン
+### コマンドでDocker hub ログイン
+Docker hubのアカウントとパスワードを使ってログインします。
 ```bash
 $ docker login
-  Username: 入力汁
-  Password:　　入力汁
+  Username: 入力
+  Password: 入力
 ```
 Login Succeededが表示されれば成功
 
 ### Dockerイメージアップロード
-作成したtest_httpserverをアップロードします。コマンド成功後、https://hub.docker.com/ を確認します。
+作成したtest_httpserverをアップロードします。これもアップロードするときのお決まりの手順です。
 ```
-$ docker image ls
-$ docker tag test_httpserver tmoritoki0227/test_httpserver:latest
-$ docker image ls
-$ docker push tmoritoki0227/test_httpserver:latest
+$ docker image ls # 現在の状態を確認
+$ docker tag test_httpserver tmoritoki0227/test_httpserver:latest # tag付けします。
+$ docker image ls # 現在の状態を確認
+$ docker push tmoritoki0227/test_httpserver:latest # アップロードします。
 ```
 - `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
+- コマンド成功後、https://hub.docker.com/ を確認しアップロードされたことを確認します。
 
 ### dockerイメージ(test_httpserver)を削除する
-ローカルにあるとそれを使ってしまうため。
+test_httpserverがローカルにあるとそれを使ってしまうため削除します
 ```
-$ docker image ls
 $ docker image rmi tmoritoki0227/test_httpserver
 $ docker image rmi test_httpserver
+$ docker image ls
 ```
 
 ### アップロードしたdockerイメージを使ってみる
