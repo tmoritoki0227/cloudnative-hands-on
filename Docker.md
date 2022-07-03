@@ -28,7 +28,7 @@ $ docker -v
 ```
 
 ## [nginxオフィシャルDockerイメージ](https://hub.docker.com/_/nginx)を利用してみよう
-ここで行う作業は[こちら](https://snowsystem.net/container/docker/nginx/)を参考にしています。
+※ ここで行う作業は[こちら](https://snowsystem.net/container/docker/nginx/)を参考にしています。
 ```bash
 $ docker pull nginx # DockerHubで公開されているnginxをpullします。
 $ docker image ls # pullしたimageを確認します
@@ -49,7 +49,7 @@ $ docker ps # コンテナの状態を確認します
 ```
 
 ## 自分でDockerイメージを作ろう
-ここで使うアプリーケーションは[こちら](https://github.com/kichiram/golang/tree/main/http_server)
+※ ここで使うアプリーケーションは[こちら](https://github.com/kichiram/golang/tree/main/http_server)です。
 ### Dockerfile作成
 ```bash
 $ mkdir ~/docker
@@ -135,7 +135,7 @@ $ docker rm test_httpserver
 ```
 
 ## 作成したDockerイメージをDockerHubへアップロード
-ここで行う作業は[こちら](https://gray-code.com/blog/container-image-push-for-dockerhub/)を参考にしています。
+※ ここで行う作業は[こちら](https://gray-code.com/blog/container-image-push-for-dockerhub/)を参考にしています。
 
 ### Docker hubへブラウザからログイン
 https://hub.docker.com/
