@@ -130,7 +130,7 @@ $ docker ps -a # -aをつけると停止したコンテナも表示されます�
 ### 作ったコンテナを停止、削除
 ```bash
 $ docker ps -a
-$ docker container stop test_httpserver
+$ docker container stop test_httpserver # これは間違いかも。２回実行している
 $ docker rm test_httpserver
 ```
 
