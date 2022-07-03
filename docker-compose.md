@@ -7,6 +7,8 @@ $ docker-compose --version
 
 ## 設定ファイルの作成
 ### docker-compose.yml
+２つのコンテナnginxとtest_httpserverを取り扱います。今回は複数のコンテナを一度の操作で起動することが目的のため、この２つのコンテナには関係性はありません。<br>
+一般的には関係性のあるコンテナを組み合わせて利用します。例えばウェブアプリケーションであればnginx（webサーバ）,mysql（データベース）のコンテナで構成します。
 ```bash
 $ cd ~/docker
 $ vi docker-compose.yml
