@@ -8,34 +8,34 @@
 
 ## EC2にdockerインストール
 これはお決まりの手順です。
-```ShellSession
+```bash
 $ sudo yum install -y docker
 $ sudo systemctl start docker
 $ sudo systemctl status docker
 $ sudo systemctl enable docker
 $ sudo usermod -a -G docker ec2-user
 
-# 現行ユーザをdockerグループに所属させる
+# 現行ユーザをdockerグループに所属させる。これでdockerコマンドがsudoなしで実行できます。
 $ sudo gpasswd -a $USER docker
 
-# dockerデーモンを再起動する (CentOS7の場合)
+# dockerデーモンを再起動する
 $ sudo systemctl restart docker
 
 # exitして再ログインすると反映される。
-$ exit
+$ exit # このあと再度インスタンスにsshしてください。
 
 $ docker -v
 ```
 
 ## [nginxオフィシャルDockerイメージ](https://hub.docker.com/_/nginx)を利用してみよう
 
-```
+```bash
 $ docker pull nginx # DockerHubで公開されているnginxをpullします。
 $ docker image ls # pullしたimageを確認します
 $ docker run -d --name nginx-test -p 8888:80 nginx # 8888でリクエストを受けて、コンテナがLISTENしているport 80に受け流す意味です
-$ docker ps　# コンテナの状態を確認します
+$ docker ps # コンテナの状態を確認します
 $ docker container stop nginx-test # コンテナを停止します。
-$ docker ps  # コンテナの状態を確認します
+$ docker ps # コンテナの状態を確認します
 ```
 - ブラウザから
 http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
@@ -147,7 +147,7 @@ Login Succeededが表示されれば成功
 
 ### Dockerイメージアップロード
 作成したtest_httpserverをアップロードします。これもアップロードするときのお決まりの手順です。
-```
+```bash
 $ docker image ls # 現在の状態を確認
 $ docker tag test_httpserver tmoritoki0227/test_httpserver:latest # tag付けします。
 $ docker image ls # 現在の状態を確認
@@ -158,7 +158,7 @@ $ docker push tmoritoki0227/test_httpserver:latest # アップロードします
 
 ### dockerイメージ(test_httpserver)を削除する
 test_httpserverがローカルにあるとそれを使ってしまうため削除します
-```
+```bash
 $ docker image rmi tmoritoki0227/test_httpserver
 $ docker image rmi test_httpserver
 $ docker image ls
