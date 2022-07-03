@@ -28,23 +28,25 @@ $ docker -v
 ```
 
 ## [nginxオフィシャルDockerイメージ](https://hub.docker.com/_/nginx)を利用してみよう
-
+ここで行う作業は[こちら](https://snowsystem.net/container/docker/nginx/)を参考にしています。
 ```bash
 $ docker pull nginx # DockerHubで公開されているnginxをpullします。
 $ docker image ls # pullしたimageを確認します
 $ docker run -d --name nginx-test -p 8888:80 nginx # 8888でリクエストを受けて、コンテナがLISTENしているport 80に受け流す意味です
 $ docker ps # コンテナの状態を確認します
+```
+- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/ へアクセスします。アドレスは自分のインスタンスに置き換えてください。port開放してないないのでアクセスできないはずです。
+- httpの8888ポートを開放
+前回の演習資料: https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md
+- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/ へアクセスできることを確認
+![image](https://user-images.githubusercontent.com/20149115/177033144-7a9876f7-4b9a-4d4f-8706-926a763448fb.png)
+
+
+
+```bash
 $ docker container stop nginx-test # コンテナを停止します。
 $ docker ps # コンテナの状態を確認します
 ```
-- ブラウザから
-http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
-アクセスできないことを確認
-- httpの8888ポートを解放
-- ブラウザから
-http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/
-アクセスできることを確認
-- この作業の詳細は[こちら](https://snowsystem.net/container/docker/nginx/)を参考にしてください。
 
 ## 自分でDockerイメージを作ろう
 ここで使うアプリーケーションは[こちら](https://github.com/kichiram/golang/tree/main/http_server)
@@ -83,8 +85,10 @@ EXPOSE 8080
 EXPOSE 8081
 CMD ["/usr/local/bin/test_httpserver", "-D", "FOREGROUND"]
 ```
+簡単にいうとOSはamazonlinuxを利用します。そして最低限のコマンドをインストールします。次にtest_httpserverをというwebアプリケーションをインストールします。このアプリケーションはport8080と8081を利用します。このアプリケーションは吉●さんのがプロメテウスの勉強会で作成したものです。
 
 ### Dockerイメージの作成
+作成したDockerfileを利用してDockerイメージを作成します。
 ```bash
 $ docker image build -t test_httpserver:latest .
 ```
@@ -101,7 +105,7 @@ $ docker image ls
 $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 test_httpserver:latest
 ```
 
-### port解放
+### port開放
 - tcp 8080
 - tcp 8081
 
@@ -133,10 +137,10 @@ $ docker rm test_httpserver
 ## 作成したDockerイメージをDockerHubへアップロード
 ここで行う作業は[こちら](https://gray-code.com/blog/container-image-push-for-dockerhub/)を参考にしています。
 
-### docker hub ブラウザからログイン
+### Docker hubへブラウザからログイン
 https://hub.docker.com/
 
-### コマンドでDocker hub ログイン
+### コマンドでDocker hubへログイン
 Docker hubのアカウントとパスワードを使ってログインします。
 ```bash
 $ docker login
@@ -155,6 +159,7 @@ $ docker push tmoritoki0227/test_httpserver:latest # アップロードします
 ```
 - `tmoritoki0227`はdockerhubのアカウント名に合わせないとだめ
 - コマンド成功後、https://hub.docker.com/ を確認しアップロードされたことを確認します。
+-  AWSのネットワーク外に通信するのでおそらく課金されます。楽しみにしていてください。
 
 ### dockerイメージ(test_httpserver)を削除する
 test_httpserverがローカルにあるとそれを使ってしまうため削除します
