@@ -129,7 +129,7 @@ $ docker container stop test_httpserver
 $ docker rm test_httpserver
 ```
 
-## dockerhubへ作成したDockerイメージをアップロード
+## 作成したDockerイメージをDockerHubへアップロード
 
 ### 参考Doc
 - https://gray-code.com/blog/container-image-push-for-dockerhub/
