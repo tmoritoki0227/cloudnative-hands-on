@@ -188,3 +188,4 @@ $ docker run -d --name test_httpserver -p 8080:8080 -p 8081:8081 tmoritoki0227/t
 $ docker stop $(docker ps -q) ;docker rmi $(docker images -q) -f;docker system prune -a
 $ docker image ls;docker ps -a
 ```
+※docker psで表示するものがないとエラーになりますが、問題はないです
