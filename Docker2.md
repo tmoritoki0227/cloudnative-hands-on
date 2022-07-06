@@ -68,8 +68,8 @@ LABEL description="amazonlinux2にnginxを入れて立ち上げ"
 RUN amazon-linux-extras install -y nginx1
 
 # 自分用にindex.htmlをカスタマイズしたものを配置
-COPY ./cloudnative-hands-on/conf/index.html /usr/share/nginx/html/
-COPY ./cloudnative-hands-on/conf/yoshi.jpeg  /usr/share/nginx/html/
+COPY ./cloudnative-hands-on/conf/html/index.html /usr/share/nginx/html/
+COPY ./cloudnative-hands-on/conf/html/yoshi.jpeg /usr/share/nginx/html/
 
 CMD ["nginx", "-g", "daemon off;"]
 ```
