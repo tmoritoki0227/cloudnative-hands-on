@@ -12,7 +12,7 @@ $ docker-compose --version
 ```bash
 $ mkdir ~/docker-compose
 $ cd ~/docker-compose
-$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on
+$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 $ vi docker-compose.yml
 ```
 
