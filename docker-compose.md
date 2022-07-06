@@ -52,7 +52,7 @@ services:
 
 ## docker-compose起動・停止
 簡単に素早く４つのコンテナを起動できることを体験しましょう。
-。
+
 ```bash
 # docker-compose起動(このあとctrl + cで停止可能）
 $ docker-compose up
@@ -78,12 +78,11 @@ $ docker-compose down
 ## 動作確認
 
 ### nginx動作確認
-- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080
-  -　php用の画面が表示されればOKです。  
-  -　https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/conf/html/index.php　のphpを表示しています。
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080 をブラウザで開きます。
+  - php用の画面が表示されればOKです。 表示している画面はhttps://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/conf/html/index.php　
 
 ### phpadmin/mysql動作確認
-- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888
+- http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888 をブラウザで開きます。
   - phpMyAdmin は PHP で実装された MySQL の管理ツールです。 MySQL のデータベースやテーブルの作成を行ったり、データの追加や参照などをブラウザから行うことができます。
   - ユーザー名root、パスワードroot_pass_fB3uWvTSでログインできるはずです。
   - 適当に触ってみましょう。
