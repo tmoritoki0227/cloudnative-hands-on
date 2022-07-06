@@ -7,7 +7,7 @@ $ docker-compose --version
 
 ## 設定ファイルの作成
 ### docker-compose.yml
-今回は4つのコンテナmysql/phpadmin/php/nginxを扱います。
+今回は4つのコンテナmysql、phpadmin、php、nginxを扱います。
 
 ```bash
 $ mkdir ~/docker-compose
