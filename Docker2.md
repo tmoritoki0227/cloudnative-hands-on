@@ -55,6 +55,7 @@ $ docker ps # コンテナの状態を確認します
 ```bash
 $ mkdir ~/docker
 $ cd ~/docker/
+$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 $ vim Dockerfile
 ```
 
@@ -64,14 +65,14 @@ FROM amazonlinux:2
 LABEL version="1.0"
 LABEL description="amazonlinux2にnginxを入れて立ち上げ"
 
-#install packeges
-RUN yum -y update
-RUN amazon-linux-extras install -y nginx1.12
+RUN amazon-linux-extras install -y nginx1
 
-# EXPOSE 8080
+# 自分用にindex.htmlをカスタマイズしたものを配置
+COPY ./cloudnative-hands-on/conf/index.html /usr/share/nginx/html/
+COPY ./cloudnative-hands-on/conf/yoshi.jpeg  /usr/share/nginx/html/
+
 CMD ["nginx", "-g", "daemon off;"]
 ```
-簡単にいうとOSはamazonlinuxを利用します。そして最低限のコマンドをインストールします。次にmy_nginxをというwebアプリケーションをインストールします。このアプリケーションはport8080と8081を利用します。このアプリケーションは吉●さんのがプロメテウスの勉強会で作成したものです。
 
 ### Dockerイメージの作成
 作成したDockerfileを利用してDockerイメージを作成します。
