@@ -33,13 +33,13 @@ $ docker -v
 ```bash
 $ docker pull nginx # DockerHubで公開されているnginxをpullします。
 $ docker image ls # pullしたimageを確認します
-$ docker run -d --name nginx-test -p 8888:80 nginx # 8888でリクエストを受けて、コンテナがLISTENしているport 80に受け流す意味です
+$ docker run -d --name nginx-test -p 8080:80 nginx # 8080でリクエストを受けて、コンテナがLISTENしているport 80に受け流す意味です
 $ docker ps # コンテナの状態を確認します
 ```
-- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/ へアクセスします。アドレスは自分のインスタンスに置き換えてください。port開放してないないのでアクセスできないはずです。
-- httpの8888ポートを開放
+- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/ へアクセスします。アドレスは自分のインスタンスに置き換えてください。port開放してないないのでアクセスできないはずです。
+- httpの8080ポートを開放
 前回の演習資料: https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md
-- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8888/ へアクセスできることを確認
+- ブラウザから http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/ へアクセスできることを確認
 ![image](https://user-images.githubusercontent.com/20149115/177033144-7a9876f7-4b9a-4d4f-8706-926a763448fb.png)
 
 
@@ -50,7 +50,7 @@ $ docker ps # コンテナの状態を確認します
 ```
 
 ## 自分でDockerイメージを作ろう
-※ ここで使うアプリーケーションは[こちら](https://github.com/kichiram/golang/tree/main/http_server)です。
+
 ### Dockerfile作成
 ```bash
 $ mkdir ~/docker
@@ -68,7 +68,7 @@ LABEL description="amazonlinux2にnginxを入れて立ち上げ"
 RUN yum -y update
 RUN amazon-linux-extras install -y nginx1.12
 
-EXPOSE 8080
+# EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
 ```
 簡単にいうとOSはamazonlinuxを利用します。そして最低限のコマンドをインストールします。次にmy_nginxをというwebアプリケーションをインストールします。このアプリケーションはport8080と8081を利用します。このアプリケーションは吉●さんのがプロメテウスの勉強会で作成したものです。
@@ -156,7 +156,7 @@ $ docker run -d --name my_nginx -p 8080:80 tmoritoki0227/my_nginx:latest
 `docker pull`時に表示されるログにダウンロード状況の表示がない場合は、ローカルにあるイメージを使ってますので、注意してください。
 
 ### ブラウザからアクセスする
-- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080/hello
+- http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080
 
 ## 後始末
 ### コンテナ停止、削除とイメージ全削除
