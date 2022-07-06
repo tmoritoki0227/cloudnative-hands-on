@@ -12,7 +12,7 @@ $ docker-compose --version
 ```bash
 $ mkdir ~/docker-compose
 $ cd ~/docker-compose
-$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on
+$ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.gitDockerfile.bk
 $ vi docker-compose.yml
 ```
 
@@ -35,8 +35,8 @@ services:
 
   php:
     image: php:7.4-fpm
-    volumes:
-      - ./nginx/html:/usr/share/nginx/html
+    volumes: # 自分でカスタマイズしたphpの設定ファイルをコンテナ上にマウントする
+      - ./cloudnative-hands-on/conf/html:/usr/share/nginx/html
       - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
     depends_on: ["db"]
 
@@ -44,63 +44,10 @@ services:
     image: tmoritoki0227/my_nginx:latest # 自分で作成したnginxを指定する
     volumes: # 自分でカスタマイズしたphpの設定ファイルをコンテナ上にマウントする
       - ./cloudnative-hands-on/conf/default.conf:/etc/nginx/conf.d/default.conf
-      - ./cloudnative-hands-on/conf/index.php:/usr/share/nginx/html/index.php
+      - ./cloudnative-hands-on/conf/html:/usr/share/nginx/html
     restart: always
     ports: ["8080:80"]
     depends_on: ["php"]
-```
-
-### default.conf（nginxイメージ用）
-
-```bash
-$ vi default.conf
-```
-
-```bash
-server {
-    listen       80;
-    listen  [::]:80;
-    server_name  localhost;
-
-    #access_log  /var/log/nginx/host.access.log  main;
-
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-    }
-
-    #error_page  404              /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /usr/share/nginx/html;
-    }
-
-    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-    #
-    #location ~ \.php$ {
-    #    proxy_pass   http://127.0.0.1;
-    #}
-
-    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-    #
-    #location ~ \.php$ {
-    #    root           html;
-    #    fastcgi_pass   127.0.0.1:9000;
-    #    fastcgi_index  index.php;
-    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-    #    include        fastcgi_params;
-    #}
-
-    # deny access to .htaccess files, if Apache's document root
-    # concurs with nginx's one
-    #
-    #location ~ /\.ht {
-    #    deny  all;
-    #}
-}
 ```
 
 ## docker-compose起動・停止
@@ -115,7 +62,7 @@ $ docker-compose up -d
 $ docker-compose ps
 
 # コンテナ(nginx)に入りたい場合
-$ docker exec -it docker-compose_nginx_1 /bin/bas
+$ docker exec -it my_nginx /bin/bash
 
 # docker-compose停止
 $ docker-compose down
@@ -137,37 +84,21 @@ $ docker-compose down
 ## docker-compose実行例
 ```
 [ec2-user@ip-172-31-4-17 docker-compose]$ docker-compose up
-Starting docker-compose_db_1 ... done
-Starting docker-compose_php_1        ... done
-Starting docker-compose_phpmyadmin_1 ... done
-Starting docker-compose_nginx_1      ... done
-Attaching to docker-compose_db_1, docker-compose_php_1, docker-compose_phpmyadmin_1, docker-compose_nginx_1
-db_1          | 2022-07-06 13:31:43+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
-db_1          | 2022-07-06 13:31:43+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-db_1          | 2022-07-06 13:31:43+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
-db_1          | 2022-07-06 13:31:43+00:00 [Note] [Entrypoint]: Initializing database files
-php_1         | [06-Jul-2022 13:31:44] NOTICE: fpm is running, pid 1
-php_1         | [06-Jul-2022 13:31:44] NOTICE: ready to handle connections
-phpmyadmin_1  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
-phpmyadmin_1  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
-phpmyadmin_1  | [Wed Jul 06 13:31:45.299990 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.53 (Debian) PHP/8.0.19 configured -- resuming normal operations
-phpmyadmin_1  | [Wed Jul 06 13:31:45.300393 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
-db_1          | 2022-07-06 13:31:48+00:00 [Note] [Entrypoint]: Database files initialized
-db_1          | 2022-07-06 13:31:48+00:00 [Note] [Entrypoint]: Starting temporary server
-db_1          | 2022-07-06 13:31:48+00:00 [Note] [Entrypoint]: Waiting for server startup
-db_1          | 2022-07-06 13:31:49+00:00 [Note] [Entrypoint]: Temporary server started.
-db_1          | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-db_1          | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
-db_1          | Warning: Unable to load '/usr/share/zoneinfo/leapseconds' as time zone. Skipping it.
-db_1          | Warning: Unable to load '/usr/share/zoneinfo/tzdata.zi' as time zone. Skipping it.
-db_1          | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
-db_1          | Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
-db_1          |
-db_1          | 2022-07-06 13:31:51+00:00 [Note] [Entrypoint]: Stopping temporary server
-db_1          | 2022-07-06 13:31:53+00:00 [Note] [Entrypoint]: Temporary server stopped
-db_1          |
-db_1          | 2022-07-06 13:31:53+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
-db_1          |
+Recreating docker-compose_db_1 ... done
+Recreating docker-compose_phpmyadmin_1 ... done
+Recreating docker-compose_php_1        ... done
+Recreating docker-compose_nginx_1      ... done
+Attaching to mysql, php, phpmyadmin, my_nginx
+mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
+mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
+mysql         | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+php           | [06-Jul-2022 13:53:56] NOTICE: fpm is running, pid 1
+php           | [06-Jul-2022 13:53:56] NOTICE: ready to handle connections
+phpmyadmin    | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
+phpmyadmin    | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
+phpmyadmin    | [Wed Jul 06 13:53:57.083547 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.53 (Debian) PHP/8.0.19 configured -- resuming normal operations
+phpmyadmin    | [Wed Jul 06 13:53:57.087347 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ## （参考）nginx設定
