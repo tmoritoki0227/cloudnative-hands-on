@@ -23,6 +23,12 @@
     $ cd 秘密鍵を保存したディレクトリ
     $ ssh -i "id_rsa.pem" ec2-user@ec2-3-113-4-139.ap-northeast-1.compute.amazonaws.com
     ```
+  - ちょっと幸せになれる~/.ssh/configの設定。
+    ```
+    User ec2-user
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    ```
   
 - インスタンス削除（終了）
 - 費用の確認方法
