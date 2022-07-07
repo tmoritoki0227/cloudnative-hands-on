@@ -186,9 +186,8 @@ $ docker run -d --name my_nginx -p 8080:80 tmoritoki0227/my_nginx:latest
 ### ブラウザからアクセスする
 - http://ec2-54-199-108-124.ap-northeast-1.compute.amazonaws.com:8080
 
-## 後始末お助けコマンド
-### コンテナ停止、削除とイメージ全削除
-インスタンスのディスク空き容量は６GBぐらいしかないので、イメージが増えるとすぐ一杯になります。不要イメージはすぐ削除しましょう。
+## 後始末
+コンテナ停止、削除とイメージ全削除します。インスタンスのディスク空き容量は６GBぐらいしかないので、イメージが増えるとすぐ一杯になります。不要イメージはすぐ削除しましょう。
 ```bash
 $ docker stop $(docker ps -q) ;docker rmi $(docker images -q) -f;docker system prune -a
 $ docker image ls;docker ps -a
