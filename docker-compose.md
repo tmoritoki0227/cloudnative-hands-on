@@ -6,7 +6,8 @@ $ docker-compose --version
 ```
 
 ## docker-compose.ymlの作成
-今回は4つのコンテナmysql、phpadmin、php、nginxを扱います。このdocker-compose.ymlは[こちら](https://qiita.com/tomokei5634/items/ff0784e88b026b530e3e)を参考にしています。
+今回は4つのコンテナmysql、phpadmin、php、nginxを扱います。このdocker-compose.ymlは[こちら](https://qiita.com/tomokei5634/items/ff0784e88b026b530e3e)を参考にしています。<br>
+nginxのイメージは自分で作成したものを指定してください。
 
 ```bash
 $ mkdir ~/docker-compose
@@ -77,7 +78,8 @@ $ docker-compose down
 
 ### nginx動作確認
 - http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8080 をブラウザで開きます。
-  - php用の画面が表示されればOKです。 表示している画面はhttps://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/conf/html/index.php　
+  - php用の画面が表示されればOKです。 表示している画面のコードは[こちら](https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/conf/html/index.php)
+  - nginxの設定ファイルは[こちら](https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/conf/default.conf)
 
 ### phpadmin/mysql動作確認
 - http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888 をブラウザで開きます。
