@@ -65,8 +65,9 @@
   - お金を稼ぐためです。新しい仕事を始めるためです。技能を持つことを証明できます。
     - [日本のエンジニアの「稼げるIT資格」とは？](https://www.korekara-freelance.com/paying-certifications/1816/)
   - 勉強のゴールとして明確だからです。 
-- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を取得をお勧めします。興味がある方は取得方法を教えます。受験料は15000円。azureやgcpの勉強してもOK。
-- Dockerはおそらく価値のある資格はありません。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka/)を取得することをご検討ください。受験料は40000円です。
+- [AWS Certified Solutions Architect](https://aws.amazon.com/jp/certification/certified-solutions-architect-associate/)を取得をお勧めします。興味がある方は取得方法を教えます。azureやgcpの勉強してもOK。
+- Dockerはおそらく価値のある資格はありません。代わりに将来的に[CKA](https://training.linuxfoundation.org/ja/certification/certified-kubernetes-administrator-cka-jp/
+)を取得することをご検討ください。
 
 ## 勉強用書籍購入方法
 - 神経質でなければメルカリ等で安く買うことをお勧めします。最近は会社で負担してくれることもあるそうです。チーム長に確認しましょう。
