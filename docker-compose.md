@@ -1,12 +1,11 @@
-## docker-composeのセットアップ
+## docker-composeのインストール
 ```bash
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
 $ docker-compose --version
 ```
 
-## 設定ファイルの作成
-### docker-compose.yml
+## docker-compose.ymlの作成
 今回は4つのコンテナmysql、phpadmin、php、nginxを扱います。このdocker-compose.ymlは[こちら](https://qiita.com/tomokei5634/items/ff0784e88b026b530e3e)を参考にしています。
 
 ```bash
@@ -16,7 +15,7 @@ $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 $ vi docker-compose.yml
 ```
 
-```bash
+```yaml:docker-compose.yml
 version: "3"
 services:
   db:
@@ -70,7 +69,6 @@ $ docker exec -it my_nginx /bin/bash
 $ docker-compose down
 ```
 
-
 ## port解放
 - 8080
 - 8888
@@ -84,30 +82,9 @@ $ docker-compose down
 ### phpadmin/mysql動作確認
 - http://ec2-35-76-109-31.ap-northeast-1.compute.amazonaws.com:8888 をブラウザで開きます。
   - phpMyAdmin は PHP で実装された MySQL の管理ツールです。 MySQL のデータベースやテーブルの作成を行ったり、データの追加や参照などをブラウザから行うことができます。
-  - ユーザー名root、パスワードroot_pass_fB3uWvTSでログインできるはずです。
-  - 適当に触ってみましょう。
+  - ユーザー名`root`、パスワード`root_pass_fB3uWvTS`でログインできます。
+  - 適当に触ってみましょう。SQLも実行可能です
 
-## docker-compose実行例
-```
-[ec2-user@ip-172-31-4-17 docker-compose]$ docker-compose up
-Recreating docker-compose_db_1 ... done
-Recreating docker-compose_phpmyadmin_1 ... done
-Recreating docker-compose_php_1        ... done
-Recreating docker-compose_nginx_1      ... done
-Attaching to mysql, php, phpmyadmin, my_nginx
-mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
-mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
-mysql         | 2022-07-06 13:53:55+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.38-1.el7 started.
-mysql         | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
-php           | [06-Jul-2022 13:53:56] NOTICE: fpm is running, pid 1
-php           | [06-Jul-2022 13:53:56] NOTICE: ready to handle connections
-phpmyadmin    | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
-phpmyadmin    | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
-phpmyadmin    | [Wed Jul 06 13:53:57.083547 2022] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.53 (Debian) PHP/8.0.19 configured -- resuming normal operations
-phpmyadmin    | [Wed Jul 06 13:53:57.087347 2022] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
-```
+## これでハンズオン演習は終了です
+- インスタンス停止またはインスタンスを削除しましょう。
 
-## （参考）nginx設定
-- https://hub.docker.com/_/nginx
-- https://solomaker.club/how-to-use-dokcer-compose-yml-file/
-- https://amateur-engineer-blog.com/docker-compose-nginx/
