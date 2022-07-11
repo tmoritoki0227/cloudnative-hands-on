@@ -12,6 +12,7 @@ nginxのイメージは自分で作成したものを指定してください。
 ```bash
 $ mkdir ~/docker-compose
 $ cd ~/docker-compose
+$ sudo yum install git -y # インストール済の場合はskipしてください
 $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 $ vi docker-compose.yml
 ```
