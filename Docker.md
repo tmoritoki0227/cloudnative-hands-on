@@ -53,6 +53,7 @@ $ docker ps # コンテナの状態を確認します
 ### Dockerfile作成
 ```bash
 $ mkdir ~/docker
+$ sudo yum install git -y
 $ cd ~/docker
 $ git clone https://github.com/tmoritoki0227/cloudnative-hands-on.git
 $ vim Dockerfile
