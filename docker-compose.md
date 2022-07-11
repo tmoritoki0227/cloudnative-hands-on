@@ -65,7 +65,7 @@ $ docker-compose up -d
 $ docker-compose ps
 
 # コンテナ(nginx)に入りたい場合
-$ docker exec -it my_nginx /bin/bash
+$ docker exec -it CONTAINER_NAME /bin/bash # CONTAINER_NAMEにはdocker-compose psで表示されたコンテナ名を指定する
 
 # docker-compose停止
 $ docker-compose down
