@@ -55,6 +55,10 @@ pod/nginx   1/1     Running   0          12m
 
 NAME            TYPE           CLUSTER-IP     EXTERNAL-IP                                                                    PORT(S)        AGE
 service/nginx   LoadBalancer   10.100.16.97   ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com   80:31761/TCP   18s
+
+# yamlを作りたい。確認したい
+kubectl run nginx --image=nginx:latest --dry-run=client -o yaml > pod.yml
+cat pod.yml
 ```
 
 この後に http://ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com:80 でnginxの画面が表示される。外部からアクセスするのでEXTERNAL-IPを使う <br>
