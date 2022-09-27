@@ -38,7 +38,7 @@ kubectl get pod
 kubectl run nginx --image=nginx:latest
 kubectl expose pod nginx --port 80 --type LoadBalancer # この後EC２のロードバランサ画面をみるとロードバランサができている
 
-kubectl get pod,service -l run=nginx
+kubectl get pod,service
 NAME        READY   STATUS    RESTARTS   AGE
 pod/nginx   1/1     Running   0          12m
 
@@ -47,6 +47,44 @@ service/nginx   LoadBalancer   10.100.16.97   ac85d2e8341ae4629a2913ab9e6e8e44-1
 ```
 
 この後に http://ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com:80 でnginxの画面が表示される。外部からアクセスするのでEXTERNAL-IPを使う 
+
+
+ちょっと応用。障害時のセルフヒーリングとロードバランシング
+```
+# まずはこれまで作ったpodとサービス削除
+kubectl delete pod,service nginx nginx
+
+# 複数のpodを起動.replicaは2にしときましょう。3はスペックが足りません
+kubectl create deployment hello-nginx --image=nginx:latest --replicas=2
+
+# 外部に公開（ロードバランシング）
+kubectl expose deployment hello-nginx --port 80 --type LoadBalancer
+
+# deployment,pod,serviceの起動確認
+kubectl get deployment,pod,service
+
+# ブラウザで確認.以下は例です。
+http://aab6b67dac06c4576b21c64d153d60b8-696062537.ap-northeast-1.elb.amazonaws.com:80
+
+# podを1台削除します。
+kubectl get pod
+kubectl delete pod NAME
+このあとブラウザで確認。１台は稼働継続中なのでまだ見れるはず。
+
+# podを2台をすばやく削除します。
+kubectl get pod
+kubectl delete pod NAME NAME
+このあとブラウザで確認。最初は見れませんが、自動で復旧し見れるようになります。（セルフヒーリング）
+
+# serviceの削除（以降はクラスタ削除で代用可能
+kubectl delete service hello-nginx
+
+# deployment(pod)の削除
+kubectl delete deployment hello-nginx
+
+# deployment,pod,serviceの起動確認
+kubectl get deployment,pod,service
+```
 
 6. クラスタ削除
 ```
@@ -202,3 +240,6 @@ PS C:\Windows\system32> eksctl delete cluster --name moritoki-cluster --wait
 2022-07-12 22:24:40 [✔]  all cluster resources were deleted
 PS C:\Windows\system32>
 ```
+
+## 課金されるサービス
+![image](https://user-images.githubusercontent.com/20149115/192515500-3874e407-198c-4161-b6d8-14dbc810f731.png)
