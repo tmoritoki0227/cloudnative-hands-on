@@ -6,12 +6,14 @@
 ## AWS EKSの構築(クラスタの作成)手順
 1. awscliを利用可能にしておく<br>
 https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md#%E4%BB%BB%E6%84%8F%E8%A8%AD%E5%AE%9A%E4%BD%9C%E6%A5%AD
+※これは一度実行すれば、次回はskip可能です。
 
 2. INSTALLING CHOCOLATEY<br>
 - powershellを管理者で起動し
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
+※これは一度実行すれば、次回はskip可能です。
 
 3. AWS EKSの構築(クラスタの作成)
 
@@ -99,7 +101,8 @@ kubectl get deployment,pod,service
 eksctl delete cluster --name moritoki --wait
 ```
 - 10分ぐらいかかる
-
+- 消し忘れると課金
+- 
 8.  .kubeフォルダを削除した方がいいかもしれない。任意です。
 ```bash
 C:\Users\user\.kube
