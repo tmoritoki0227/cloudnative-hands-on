@@ -94,9 +94,10 @@ eksctl delete cluster --name moritoki --wait
 ```
 - 10分ぐらいかかる
 
-8.  .kubeフォルダを削除した方がいいかもしれない。
+8.  .kubeフォルダを削除した方がいいかもしれない。任意です。
+```
 C:\Users\user\.kube
-
+```
 ## 参考
 - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/eksctl.html
 - https://dev.classmethod.jp/articles/getting-started-amazon-eks-with-eksctl/
