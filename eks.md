@@ -105,7 +105,7 @@ $ kubectl get deployment,pod,service
 
 
 
-### クラスタ削除
+### EKS削除
 ```bash
 $ eksctl delete cluster --name moritoki --wait
 ```
