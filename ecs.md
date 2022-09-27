@@ -9,13 +9,13 @@ https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md#%E4%BB%BB
 
 2. INSTALLING CHOCOLATEY<br>
 - powershellを管理者で起動し
-```
+```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
 3. AWS EKSの構築(クラスタの作成)
 
-```
+```bash
 eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2 
 ```
 
@@ -31,13 +31,19 @@ eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.mi
 - https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-on-windows-using-chocolatey-or-scoop
 
 5. 動作確認（基本編）
-```
+```bash
+# nodeの確認
 kubectl get node
+# namespaceの確認
 kubectl get namespace
+# podの確認
 kubectl get pod
+# pod起動
 kubectl run nginx --image=nginx:latest
+# 外部に公開
 kubectl expose pod nginx --port 80 --type LoadBalancer # この後EC２のロードバランサ画面をみるとロードバランサができている
 
+# pod,service状況確認
 kubectl get pod,service
 NAME        READY   STATUS    RESTARTS   AGE
 pod/nginx   1/1     Running   0          12m
@@ -52,7 +58,7 @@ service/nginx   LoadBalancer   10.100.16.97   ac85d2e8341ae4629a2913ab9e6e8e44-1
 
 6. 動作確認（応用編）
 障害時のセルフヒーリングとロードバランシングを確認する。
-```
+```bash
 # まずはこれまで作ったpodとサービス削除
 kubectl delete pod,service nginx nginx
 
@@ -89,13 +95,13 @@ kubectl get deployment,pod,service
 ```
 
 7. クラスタ削除
-```
+```bash
 eksctl delete cluster --name moritoki --wait
 ```
 - 10分ぐらいかかる
 
 8.  .kubeフォルダを削除した方がいいかもしれない。任意です。
-```
+```bash
 C:\Users\user\.kube
 ```
 ## 参考
