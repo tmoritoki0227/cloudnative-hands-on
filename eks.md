@@ -1,38 +1,37 @@
-## AWSのEKSを試してみる
+## AWSのEKSとは
+- https://aws.amazon.com/jp/eks/
 - １コマンドでkubernetesクラスタが作れることがわかった。UIを使うとしんどい。
-- もし講義と演習をするなら最初に構築して、講義を開始する。講義が終わったころにはクラスタができている。
 - PC上でkubernetes操作したいだけならもっと簡単と思われる。https://birthday.play-with-docker.com/kubernetes-docker-desktop/
 
-## AWS EKSの構築(クラスタの作成)手順
-1. awscliを利用可能にしておく<br>
-https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md#%E4%BB%BB%E6%84%8F%E8%A8%AD%E5%AE%9A%E4%BD%9C%E6%A5%AD
-※これは一度実行すれば、次回はskip可能です。
+## EKSの構築手順
+### awscliを利用可能にする
+- https://github.com/tmoritoki0227/cloudnative-hands-on/blob/main/Aws.md#%E4%BB%BB%E6%84%8F%E8%A8%AD%E5%AE%9A%E4%BD%9C%E6%A5%AD
+- これは一度実行すれば、次回skip可能です。
 
-2. INSTALLING CHOCOLATEY<br>
-- powershellを管理者で起動し
+### INSTALLING CHOCOLATEY
+- powershellを管理者で起動して、以下のコマンドを実行する。するとCHOCOLATEYがインストールされます。
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
-※これは一度実行すれば、次回はskip可能です。
+- これは一度実行すれば、次回skip可能です。<br>
+- [CHOCOLATEYとは](https://tomosta.jp/2019/06/chocolatey/)
 
-3. AWS EKSの構築(クラスタの作成)
-
+###  EKSの構築
+引き続きpowershellで以下を実行します。クラスタが作成されます。
 ```bash
 eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2 
 ```
-
-完了後、https://ap-northeast-1.console.aws.amazon.com/eks/home?region=ap-northeast-1#/home eksをみるとクラスタができていることがわかる
+- 完了後、https://ap-northeast-1.console.aws.amazon.com/eks/home?region=ap-northeast-1#/home eksをみるとクラスタができていることがわかる
 - ３０分かかる 
 - nameには自動で-clusterが付与されます
-- クラスタへの接続設定もしてくれます~/.kube/config
-- cloudformationをみると２つのスタックが動く
+- クラスタへの接続設定もしてくれます`~/.kube/config`
+- cloudformationをみると２つのスタックが動いてることがわかる
 
-
-4. kubectlをインストール
-- powershellを管理者で起動し
-- https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-on-windows-using-chocolatey-or-scoop
-
-5. 動作確認（基本編）
+### kubectlをインストール
+- 引き続きpowershellを管理者で起動し[kubectlをインストール](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-on-windows-using-chocolatey-or-scoop)します。
+    
+- これは一度実行すれば、次回skip可能です。<br>
+### 動作確認（基本編）
 ```bash
 # nodeの確認
 kubectl get node
@@ -58,11 +57,10 @@ NAME            TYPE           CLUSTER-IP     EXTERNAL-IP                       
 service/nginx   LoadBalancer   10.100.16.97   ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com   80:31761/TCP   18s
 ```
 
-この後に http://ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com:80 でnginxの画面が表示される。外部からアクセスするのでEXTERNAL-IPを使う 
+この後に http://ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com:80 でnginxの画面が表示される。外部からアクセスするのでEXTERNAL-IPを使う <br>
 ![image](https://user-images.githubusercontent.com/20149115/192526746-96abe7ba-db56-4ac6-aed2-934b7587efcc.png)
 
-
-6. 動作確認（応用編）
+### 動作確認（応用編）
 障害時のセルフヒーリングとロードバランシングを確認する。
 ```bash
 # まずはこれまで作ったpodとサービス削除
@@ -100,7 +98,9 @@ kubectl delete deployment hello-nginx
 kubectl get deployment,pod,service
 ```
 
-7. クラスタ削除
+
+
+### クラスタ削除
 ```bash
 eksctl delete cluster --name moritoki --wait
 ```
@@ -117,6 +117,8 @@ C:\Users\user\.kube
 - https://developer.mamezou-tech.com/containers/k8s/tutorial/infra/aws-eks-eksctl/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D
 
 ## おまけ
+### EKS作成コマンドの実行ログ
+30分かかります。
 ```
 ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 PS C:\Windows\system32> eksctl create cluster --name moritoki-cluster --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2
@@ -257,6 +259,6 @@ PS C:\Windows\system32> eksctl delete cluster --name moritoki-cluster --wait
 PS C:\Windows\system32>
 ```
 
-## 課金されるサービス
+### 課金されるサービス
 ![image](https://user-images.githubusercontent.com/20149115/192515500-3874e407-198c-4161-b6d8-14dbc810f731.png)
 １０円ぐらいかな。
