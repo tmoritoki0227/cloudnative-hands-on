@@ -36,12 +36,16 @@ eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.mi
 ```bash
 # nodeの確認
 kubectl get node
+
 # namespaceの確認
 kubectl get namespace
+
 # podの確認
 kubectl get pod
+
 # pod起動
 kubectl run nginx --image=nginx:latest
+
 # 外部に公開
 kubectl expose pod nginx --port 80 --type LoadBalancer # この後EC２のロードバランサ画面をみるとロードバランサができている
 
@@ -102,7 +106,7 @@ eksctl delete cluster --name moritoki --wait
 ```
 - 10分ぐらいかかる
 - 消し忘れると課金
-- 
+
 8.  .kubeフォルダを削除した方がいいかもしれない。任意です。
 ```bash
 C:\Users\user\.kube
