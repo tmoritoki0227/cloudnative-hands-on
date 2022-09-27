@@ -266,4 +266,5 @@ PS C:\Windows\system32>
 
 ### 課金されるサービス
 ![image](https://user-images.githubusercontent.com/20149115/192515500-3874e407-198c-4161-b6d8-14dbc810f731.png)
-１０円ぐらいかな。
+- １０円ぐらいかな。
+- 皆様が盛大に課金されるような日をお待ちしております。
