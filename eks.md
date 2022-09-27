@@ -11,7 +11,7 @@
 ### INSTALLING CHOCOLATEY
 - powershellを管理者で起動して、以下のコマンドを実行する。するとCHOCOLATEYがインストールされます。
 ```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+$ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 - これは一度実行すれば、次回skip可能です。<br>
 - [CHOCOLATEYとは](https://tomosta.jp/2019/06/chocolatey/)
@@ -19,7 +19,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 ###  EKSの構築
 引き続きpowershellで以下を実行します。クラスタが作成されます。
 ```bash
-eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2 
+$ eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2 
 ```
 - 完了後、https://ap-northeast-1.console.aws.amazon.com/eks/home?region=ap-northeast-1#/home eksをみるとクラスタができていることがわかる
 - ３０分かかる 
@@ -34,22 +34,23 @@ eksctl create cluster --name moritoki --region ap-northeast-1  --node-type t2.mi
 ### 動作確認（基本編）
 ```bash
 # nodeの確認
-kubectl get node
+$ kubectl get node
 
 # namespaceの確認
-kubectl get namespace
+$ kubectl get namespace
 
 # podの確認
-kubectl get pod
+$ kubectl get pod
 
 # pod起動
-kubectl run nginx --image=nginx:latest
+$ kubectl run nginx --image=nginx:latest
 
 # 外部に公開
-kubectl expose pod nginx --port 80 --type LoadBalancer # この後EC２のロードバランサ画面をみるとロードバランサができている
+$ kubectl expose pod nginx --port 80 --type LoadBalancer # この後EC２のロードバランサ画面をみるとロードバランサができている
 
 # pod,service状況確認
-kubectl get pod,service
+$ kubectl get pod,service
+
 NAME        READY   STATUS    RESTARTS   AGE
 pod/nginx   1/1     Running   0          12m
 
@@ -57,8 +58,8 @@ NAME            TYPE           CLUSTER-IP     EXTERNAL-IP                       
 service/nginx   LoadBalancer   10.100.16.97   ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com   80:31761/TCP   18s
 
 # yamlを作りたい。確認したい
-kubectl run nginx --image=nginx:latest --dry-run=client -o yaml > pod.yml
-cat pod.yml
+$ kubectl run nginx --image=nginx:latest --dry-run=client -o yaml > pod.yml
+$ cat pod.yml
 ```
 
 この後に http://ac85d2e8341ae4629a2913ab9e6e8e44-1878198863.ap-northeast-1.elb.amazonaws.com:80 でnginxの画面が表示される。外部からアクセスするのでEXTERNAL-IPを使う <br>
@@ -68,45 +69,45 @@ cat pod.yml
 障害時のセルフヒーリングとロードバランシングを確認する。
 ```bash
 # まずはこれまで作ったpodとサービス削除
-kubectl delete pod,service nginx nginx
+$ kubectl delete pod,service nginx nginx
 
 # 複数のpodを起動.replicaは2にしときましょう。3はスペックが足りません
-kubectl create deployment hello-nginx --image=nginx:latest --replicas=2
+$ kubectl create deployment hello-nginx --image=nginx:latest --replicas=2
 
 # 外部に公開（ロードバランシング）
-kubectl expose deployment hello-nginx --port 80 --type LoadBalancer
+$ kubectl expose deployment hello-nginx --port 80 --type LoadBalancer
 
 # deployment,pod,serviceの起動確認
-kubectl get deployment,pod,service
+$ kubectl get deployment,pod,service
 
 # ブラウザで確認.以下は例です。
 http://aab6b67dac06c4576b21c64d153d60b8-696062537.ap-northeast-1.elb.amazonaws.com:80
 
 # podを1台削除します。
-kubectl get pod
-kubectl delete pod NAME
+$ kubectl get pod
+$ kubectl delete pod NAME
 このあとブラウザで確認。１台は稼働継続中なのでまだ見れるはず。
 
 # podを2台をすばやく削除します。
-kubectl get pod
-kubectl delete pod NAME NAME
+$ kubectl get pod
+$ kubectl delete pod NAME NAME
 このあとブラウザで確認。最初は見れませんが、自動で復旧し見れるようになります。（セルフヒーリング）
 
 # serviceの削除（以降はクラスタ削除で代用可能
-kubectl delete service hello-nginx
+$ kubectl delete service hello-nginx
 
 # deployment(pod)の削除
-kubectl delete deployment hello-nginx
+$ kubectl delete deployment hello-nginx
 
 # deployment,pod,serviceの起動確認
-kubectl get deployment,pod,service
+$ kubectl get deployment,pod,service
 ```
 
 
 
 ### クラスタ削除
 ```bash
-eksctl delete cluster --name moritoki --wait
+$ eksctl delete cluster --name moritoki --wait
 ```
 - 10分ぐらいかかる
 - 消し忘れると課金
@@ -124,7 +125,6 @@ C:\Users\user\.kube
 ### EKS作成コマンドの実行ログ
 30分かかります。
 ```
-＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 PS C:\Windows\system32> eksctl create cluster --name moritoki-cluster --region ap-northeast-1  --node-type t2.micro --nodes 2 --nodes-min 2 --nodes-max 2
 2022-07-12 21:24:35 [ℹ]  eksctl version 0.105.0
 2022-07-12 21:24:35 [ℹ]  using region ap-northeast-1
@@ -200,9 +200,10 @@ kube-public       Active   23m
 kube-system       Active   23m
 PS C:\Windows\system32> kubectl get pod
 No resources found in default namespace.
-＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+```
 
-
+### podを起動してシェルで接続する
+```
 PS C:\Windows\system32> kubectl run -i --tty busybox --image=busybox -- sh
 If you don't see a command prompt, try pressing enter.
 / # wget -qO- 192.168.88.96:80
@@ -230,8 +231,11 @@ Commercial support is available at
 </body>
 </html>
 / #
+```
 
-＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+### EKS削除コマンドの実行ログ
+
+```
 PS C:\Windows\system32> eksctl delete cluster --name moritoki-cluster --wait
 2022-07-12 22:13:15 [ℹ]  deleting EKS cluster "moritoki-cluster"
 2022-07-12 22:13:16 [ℹ]  will drain 0 unmanaged nodegroup(s) in cluster "moritoki-cluster"
