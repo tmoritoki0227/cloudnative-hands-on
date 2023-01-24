@@ -95,11 +95,13 @@
 ## 適当にセットアップしてみよう
 ※ これからsudoコマンドを使いますが、ec2-userのデフォルトのsudoパスワードは設定されていませんのでパスワードの入力は求められません。
 ### nginxインストール
-```
+[nginxとは...](https://www.kagoya.jp/howto/it-glossary/web/nginx/)
+
+```bash
 $ sudo amazon-linux-extras install nginx1 -y 
-$ sudo systemctl enable nginx # 自動起動設定
+$ sudo systemctl enable nginx  # 自動起動設定
 $ sudo systemctl start nginx　 # nginx起動
-$ sudo systemctl status nginx # Active: active (running)であること
+$ sudo systemctl status nginx  # Active: active (running)であること
 ```
 - ブラウザでアクセスしてみる。プロトコルはhttpで、IPは利用しているインスタンスのIP（パブリックDNS)に読み替えてください。アクセスするとポート開放されてないのでエラーになります。
   - http://ec2-18-179-29-96.ap-northeast-1.compute.amazonaws.com
