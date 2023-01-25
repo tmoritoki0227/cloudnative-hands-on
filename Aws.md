@@ -13,6 +13,7 @@
 - キーペアのタイプ: `RSA`
 - プライベートキーファイル形式: `.pem`　（puttyユーザは.ppkでよいです）
 - 保存場所: 任意。一般的にはホームディレクトリの下の.sshディレクトリに保存します。(Windowsの例`C:\Users\自分の名前\.ssh\id_rsa`)
+- macの場合はchmod 400
 
 ![image](https://user-images.githubusercontent.com/20149115/214307317-a10d7c71-f9ea-4a0b-892a-24255b2f818e.png)
 
